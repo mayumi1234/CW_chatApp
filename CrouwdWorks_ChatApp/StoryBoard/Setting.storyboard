@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ih6-Iw-q7L">
+            <objects>
+                <navigationController id="Kfx-Co-nnS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wZl-h2-MFA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2SE-Qp-CVG" kind="relationship" relationship="rootViewController" id="IjU-4z-u7K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ifc-7d-xv0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1807" y="64"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="535-4E-x6k">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2SE-Qp-CVG" customClass="SettingViewController" customModule="CrouwdWorks_ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h7I-ZJ-9Co">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ake-tr-Is7">
+                                <rect key="frame" x="82" y="188" width="250" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exz-jh-LBE">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="67.5"/>
+                                        <state key="normal" title="相手アイコン選択"/>
+                                        <connections>
+                                            <action selector="iconSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="vl9-YL-UFs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7C-Hq-mvu">
+                                        <rect key="frame" x="0.0" y="77.5" width="250" height="67.5"/>
+                                        <state key="normal" title="背景画像選択"/>
+                                        <connections>
+                                            <action selector="backGroundSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="tiK-2H-ow2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-D4-JQp">
+                                        <rect key="frame" x="0.0" y="155" width="250" height="67.5"/>
+                                        <state key="normal" title="効果音選択"/>
+                                        <connections>
+                                            <action selector="musicSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="ea5-DY-QQG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXG-ec-wyX">
+                                        <rect key="frame" x="0.0" y="232.5" width="250" height="67.5"/>
+                                        <state key="normal" title="変更"/>
+                                        <connections>
+                                            <action selector="settingButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="D3n-to-dVK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="3nb-vz-sop"/>
+                                    <constraint firstAttribute="height" constant="300" id="bnh-7w-aGp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ake-tr-Is7" firstAttribute="top" secondItem="eRA-K5-kjh" secondAttribute="top" constant="100" id="J2I-WU-419"/>
+                            <constraint firstItem="ake-tr-Is7" firstAttribute="centerX" secondItem="h7I-ZJ-9Co" secondAttribute="centerX" id="pES-2e-NgZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eRA-K5-kjh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b0K-4T-aH9"/>
+                    <connections>
+                        <outlet property="backgroundButton" destination="P7C-Hq-mvu" id="mXT-WV-mqw"/>
+                        <outlet property="iconButton" destination="exz-jh-LBE" id="fr1-af-F1s"/>
+                        <outlet property="musicButton" destination="oH2-D4-JQp" id="At9-Ah-jJL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fgq-PG-cnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="58"/>
+        </scene>
+    </scenes>
+</document>

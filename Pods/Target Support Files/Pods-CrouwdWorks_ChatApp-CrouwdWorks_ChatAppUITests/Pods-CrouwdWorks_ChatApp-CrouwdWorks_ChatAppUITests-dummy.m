@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CrouwdWorks_ChatApp_CrouwdWorks_ChatAppUITests : NSObject
+@end
+@implementation PodsDummy_Pods_CrouwdWorks_ChatApp_CrouwdWorks_ChatAppUITests
+@end

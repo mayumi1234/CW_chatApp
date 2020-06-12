@@ -1,0 +1,6 @@
+framework module Pods_CrouwdWorks_ChatApp_CrouwdWorks_ChatAppUITests {
+  umbrella header "Pods-CrouwdWorks_ChatApp-CrouwdWorks_ChatAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
