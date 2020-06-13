@@ -40,6 +40,11 @@ class ChatRoomTableViewCell: UITableViewCell {
         checkWhichUserMessage()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userImageView.image = nil
+    }
+    
     private func checkWhichUserMessage() {
 //        guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -72,6 +77,7 @@ class ChatRoomTableViewCell: UITableViewCell {
             if let urlString = message?.imageUrl, let url = URL(string: urlString) {
                 Nuke.loadImage(with: url, into: userImageView)
                 print("chatroomtableviewcontroller: ", message?.imageUrl)
+//                ここの値が変わってくれません
             }
 
             if let message = message {

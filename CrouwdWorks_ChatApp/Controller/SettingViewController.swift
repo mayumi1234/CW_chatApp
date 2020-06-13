@@ -63,13 +63,12 @@ class SettingViewController: UIViewController {
                 self.urlFunction(profileImageUrl: urtString)
             }
         }
+        
+//        self.dismiss(animated: true, completion: nil)
     }
     
     private func urlFunction(profileImageUrl: String) {
         guard let chatroomDocId = self.documentId else { return }
-        guard let imageUrl = self.message?.imageUrl else {
-            return
-        }
         
         let ImageUrl = [
             "profileImageUrl": profileImageUrl
@@ -83,12 +82,12 @@ class SettingViewController: UIViewController {
             print("最新イメージの保存に成功しました。")
         }
         
-//        message?.imageUrl = profileImageUrl
-//        chatroom?.profileImageUrl = profileImageUrl
-//        let url = profileImageUrl
+        print(profileImageUrl)
+//        profileImageUrl
+//        この値には正しい値が入っています。
+        message?.imageUrl = profileImageUrl
+//        この部分で、message?.imageUrlにnilが入ってしまう。
         print("signupviewcontroller: ", message?.imageUrl)
-//        print(chatroom?.profileImageUrl as Any)
-//        print(url)
         
             self.dismiss(animated: true, completion: nil)
     }

@@ -69,7 +69,7 @@ class ChatRoomViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
         let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         settingViewController.documentId = chatroom?.documentId
-        settingViewController.message? = self.messages
+//        settingViewController.message? = self.messages
         let nav = UINavigationController(rootViewController: settingViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
