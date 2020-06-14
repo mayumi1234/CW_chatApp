@@ -52,6 +52,8 @@ class ChatRoomViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        fetchMessages()
+//        fetchMessagesをここで呼ぶことで再取得した
         self.chatRoomTableView.reloadData()
     }
     
@@ -69,7 +71,8 @@ class ChatRoomViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
         let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         settingViewController.documentId = chatroom?.documentId
-//        settingViewController.message? = self.messages
+        settingViewController.message?.imageUrl = ""
+//        ここでmessageプロパティを初期化
         let nav = UINavigationController(rootViewController: settingViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
