@@ -118,7 +118,7 @@ class ChatRoomViewController: UIViewController {
                     let dic = documentChange.document.data()
                     let message = Message(dic: dic)
                     message.partnerUser = self.chatroom?.partnerUser
-                    message.imageUrl = self.chatroom?.profileImageUrl
+                    message.imageUrl = self.chatroom?.profileImageUrl as! String
                     self.messages.append(message)
                     self.messages.sort { (m1, m2) -> Bool in
                         let m1Date = m1.createdAt.dateValue()

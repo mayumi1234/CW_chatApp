@@ -20,7 +20,7 @@ class Message {
     let flag: String
     
     var partnerUser: User?
-    var imageUrl: String?
+    var imageUrl = ""
     
     init(dic: [String: Any]) {
         self.name = dic["name"] as? String ?? ""
@@ -28,6 +28,7 @@ class Message {
         self.uid = dic["uid"] as? String ?? ""
         self.createdAt = dic["createdAt"] as? Timestamp ?? Timestamp()
         self.flag = dic["flag"] as? String ?? ""
+        self.imageUrl = dic["imageUrl"] as? String ?? ""
     }
     
 }
