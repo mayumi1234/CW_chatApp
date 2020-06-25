@@ -13,21 +13,17 @@ import FirebaseFirestore
 
 class ChatRoom {
     
-//    let latestMessageId: String
-//    let memebers: [String]
-//    let createdAt: Timestamp
-    
     var username: String
     var profileImageUrl: String
     
     var latestMessage: Message?
-    var partnerUser: User?
     var documentId: String?
+    var flag: String?
     
     init(dic: [String: Any]) {
         self.username = dic["username"] as? String ?? ""
         self.profileImageUrl = dic["profileImageUrl"] as? String ?? ""
-//        self.createdAt = dic["createdAt"] as? Timestamp ?? Timestamp()
+//        self.flag = dic["flag"] as? String ?? "0" // 初期値は画像の変更なし
     }
     
 }

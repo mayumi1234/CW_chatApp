@@ -14,13 +14,11 @@ import FirebaseAuth
 
 class ChatRoomViewController: UIViewController {
     
-    var user: User?
     var chatroom: ChatRoom?
     var message: Message?
     
     private let cellId = "cellId"
     private var messages = [Message]()
-    private var users = [User]()
     private var chatrooms = [ChatRoom]()
     
     private lazy var chatInputAccessoryView: ChatInputAccesaryView = {
@@ -46,15 +44,15 @@ class ChatRoomViewController: UIViewController {
         chatRoomTableView.contentInset = .init(top: 0, left: 0, bottom: 80, right: 0)
         chatRoomTableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 80, right: 0)
         
-        fetchMessages()
+//        fetchMessages()
+//        ここに上の関数を入れると、メッセージの値は通常通りだが、画像の変更がされない
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        fetchMessages()
-//        fetchMessagesをここで呼ぶことで再取得した
-        self.chatRoomTableView.reloadData()
+        fetchMessages()
+//        ここに上の関数を入れると、設定画面で画像を変更するたびにメッセージが増えていく
     }
     
     override var inputAccessoryView: UIView? {
@@ -71,42 +69,18 @@ class ChatRoomViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "Setting", bundle: nil)
         let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         settingViewController.documentId = chatroom?.documentId
-        settingViewController.message?.imageUrl = ""
-//        ここでmessageプロパティを初期化
+        settingViewController.chatroom = chatroom
         let nav = UINavigationController(rootViewController: settingViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     
-//    private func fetchUserInfoFromFirestore() {
-//        Firestore.firestore().collection("chatRooms")
-//            .addSnapshotListener { (snapshots, err) in
-//            if let err = err {
-//                print("chatrooms情報の取得に失敗しました。\(err)")
-//                return
-//            }
-//
-//            snapshots?.documentChanges.forEach({ (documentChange) in
-//                switch documentChange.type {
-//                case .added:
-//                    self.handleAddedDocumentChange(documentChange: documentChange)
-//                case .modified, .removed:
-//                    print("nothing to do")
-//                }
-//            })
-//        }
-//    }
-//
-//    private func handleAddedDocumentChange(documentChange: DocumentChange) {
-//        let dic = documentChange.document.data()
-//        let chatroom = ChatRoom(dic: dic)
-//        chatroom.documentId = documentChange.document.documentID
-//
-//        self.chatrooms.insert(chatroom, at: 0)
-//        self.chatRoomTableView.reloadData()
-//    }
-    
+//    画像とメッセージを追加したために、二回この関数でmessage配列がappendされてしまうのが原因かと考える
     private func fetchMessages() {
+        self.chatrooms.removeAll()
+        self.messages.removeAll()
+        self.chatRoomTableView.reloadData()
+        
         guard let chatroomDocId = chatroom?.documentId else { return }
         Firestore.firestore().collection("chatRooms").document(chatroomDocId).collection("messages").addSnapshotListener { (snapshots, err) in
             
@@ -120,9 +94,13 @@ class ChatRoomViewController: UIViewController {
                 case .added:
                     let dic = documentChange.document.data()
                     let message = Message(dic: dic)
-                    message.partnerUser = self.chatroom?.partnerUser
+                    let chatroom = ChatRoom(dic: dic)
                     message.imageUrl = self.chatroom?.profileImageUrl as! String
+                    chatroom.profileImageUrl = self.chatroom?.profileImageUrl as! String
+//                    元々addSnapshotListenerのところで場合わけする？（このコメントは気にしないでください）
                     self.messages.append(message)
+                    print(self.messages.count)
+                    self.chatrooms.append(chatroom)
                     self.messages.sort { (m1, m2) -> Bool in
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
@@ -248,6 +226,7 @@ extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatRoomTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatRoomTableViewCell
         cell.message = messages[indexPath.row]
+        print("messages.count ", messages.count)
         return cell
     }
 }

@@ -15,12 +15,11 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var backgroundButton: UIButton!
     @IBOutlet weak var musicButton: UIButton!
     
-//    var chatroom: ChatRoom?
     var message: Message?
-    
-    private var messages = [Message]()
+    var chatroom: ChatRoom?
     
     var documentId: String?
+    var imageUrl: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +62,6 @@ class SettingViewController: UIViewController {
                 self.urlFunction(profileImageUrl: urtString)
             }
         }
-        
-//        self.dismiss(animated: true, completion: nil)
     }
     
     private func urlFunction(profileImageUrl: String) {
@@ -82,14 +79,13 @@ class SettingViewController: UIViewController {
             print("最新イメージの保存に成功しました。")
         }
         
-        print(profileImageUrl)
-//        profileImageUrl
-//        この値には正しい値が入っています。
         message?.imageUrl = profileImageUrl
-//        この部分で、message?.imageUrlにnilが入ってしまう。
-        print("signupviewcontroller: ", message?.imageUrl)
+        chatroom?.profileImageUrl = profileImageUrl
+        chatroom?.flag = "1"
+//        アイコンを変えるたびに、dismissした後のチャットルームで、メッセージを送信すると、アイコン変更回数につれて表示されるセルが増えてゆく
+//        また、もう一度アイコンを変えてチャットルーム画面に戻ると、表示は正しくされる
         
-            self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var madeChatRoomButton: UIButton!
     
-    var message: Message?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -59,9 +59,6 @@ class ChatInputAccesaryView: UIView {
         textView.delegate = self
         
         myButton.layer.cornerRadius = 15
-//        button.imageView?.contentMode = .scaleAspectFit
-//        button.contentHorizontalAlignment = .fill
-//        button.contentVerticalAlignment = .fill
         myButton.isEnabled = false
         
         partnerButton.layer.cornerRadius = 15

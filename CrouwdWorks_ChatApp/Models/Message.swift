@@ -19,8 +19,7 @@ class Message {
     let createdAt: Timestamp
     let flag: String
     
-    var partnerUser: User?
-    var imageUrl = ""
+    var imageUrl: String
     
     init(dic: [String: Any]) {
         self.name = dic["name"] as? String ?? ""

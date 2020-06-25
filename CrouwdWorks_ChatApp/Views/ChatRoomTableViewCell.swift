@@ -46,10 +46,10 @@ class ChatRoomTableViewCell: UITableViewCell {
     }
     
     private func checkWhichUserMessage() {
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+//        print("message?.message: ", message?.message)
         
 //        自分が入力した時
-//        if uid == message?.uid {
         if message?.flag == "0" {
             textView.isHidden = true
             label.isHidden = true
@@ -76,8 +76,6 @@ class ChatRoomTableViewCell: UITableViewCell {
             
             if let urlString = message?.imageUrl, let url = URL(string: urlString) {
                 Nuke.loadImage(with: url, into: userImageView)
-                print("chatroomtableviewcontroller: ", message?.imageUrl)
-//                ここの値が変わってくれません
             }
 
             if let message = message {
