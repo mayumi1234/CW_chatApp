@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Firebase
 
 protocol ChatInputAccesaryViewDelegate: class {
     func tappedMySendButton(text: String)
@@ -19,18 +20,22 @@ class ChatInputAccesaryView: UIView {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var partnerButton: UIButton!
-    
     weak var delegate: ChatInputAccesaryViewDelegate?
-    
     var audioPlayerInstance : AVAudioPlayer! = nil
+    var chatroom: ChatRoom?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         nibInit()
         setUpViews()
-        
-        autoresizingMask = .flexibleHeight
+        setupSound()
+    }
+    
+    private func setupSound() {
+//        guard let urlString = chatroom?.soundUrl else { return }
+//        guard let url = URL(string: urlString) else { return }
+//        ここでchatroom?.soundUrlに値が入ってくれていない
         
         let soundFilePath = Bundle.main.path(forResource: "decision1", ofType: "mp3")!
         let sound:URL = URL(fileURLWithPath: soundFilePath)
@@ -63,6 +68,8 @@ class ChatInputAccesaryView: UIView {
         
         partnerButton.layer.cornerRadius = 15
         partnerButton.isEnabled = false
+        
+        autoresizingMask = .flexibleHeight
         
     }
     

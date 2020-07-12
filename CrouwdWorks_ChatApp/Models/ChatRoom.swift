@@ -15,15 +15,15 @@ class ChatRoom {
     
     var username: String
     var profileImageUrl: String
-    
-    var latestMessage: Message?
     var documentId: String?
-    var flag: String?
+    var backgroundImageUrl: String?
+    var soundUrl: String?
     
     init(dic: [String: Any]) {
         self.username = dic["username"] as? String ?? ""
         self.profileImageUrl = dic["profileImageUrl"] as? String ?? ""
-//        self.flag = dic["flag"] as? String ?? "0" // 初期値は画像の変更なし
+        self.backgroundImageUrl = dic["backgroundImageUrl"] as? String ?? ""
+        self.soundUrl = dic["soundUrl"] as? String ?? ""
     }
     
 }

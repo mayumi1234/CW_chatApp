@@ -31,54 +31,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ake-tr-Is7">
-                                <rect key="frame" x="82" y="188" width="250" height="300"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ake-tr-Is7">
+                                <rect key="frame" x="132" y="138" width="150" height="660"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exz-jh-LBE">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="FGI-zc-OTZ"/>
+                                            <constraint firstAttribute="width" constant="150" id="IpR-0a-Gjb"/>
+                                        </constraints>
                                         <state key="normal" title="相手アイコン選択"/>
                                         <connections>
                                             <action selector="iconSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="vl9-YL-UFs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7C-Hq-mvu">
-                                        <rect key="frame" x="0.0" y="77.5" width="250" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="210" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="zA9-PY-4tV"/>
+                                        </constraints>
                                         <state key="normal" title="背景画像選択"/>
                                         <connections>
                                             <action selector="backGroundSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="tiK-2H-ow2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-D4-JQp">
-                                        <rect key="frame" x="0.0" y="155" width="250" height="67.5"/>
+                                        <rect key="frame" x="0.0" y="420" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="X9Z-dQ-K9x"/>
+                                        </constraints>
                                         <state key="normal" title="効果音選択"/>
                                         <connections>
                                             <action selector="musicSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="ea5-DY-QQG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXG-ec-wyX">
-                                        <rect key="frame" x="0.0" y="232.5" width="250" height="67.5"/>
-                                        <state key="normal" title="変更"/>
+                                        <rect key="frame" x="0.0" y="630" width="150" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Sg5-z8-fbp"/>
+                                        </constraints>
+                                        <state key="normal" title="変更">
+                                            <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="settingButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="D3n-to-dVK"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="3nb-vz-sop"/>
-                                    <constraint firstAttribute="height" constant="300" id="bnh-7w-aGp"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ake-tr-Is7" firstAttribute="top" secondItem="eRA-K5-kjh" secondAttribute="top" constant="100" id="J2I-WU-419"/>
+                            <constraint firstItem="ake-tr-Is7" firstAttribute="top" secondItem="eRA-K5-kjh" secondAttribute="top" constant="50" id="J2I-WU-419"/>
                             <constraint firstItem="ake-tr-Is7" firstAttribute="centerX" secondItem="h7I-ZJ-9Co" secondAttribute="centerX" id="pES-2e-NgZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eRA-K5-kjh"/>
                     </view>
-                    <navigationItem key="navigationItem" id="b0K-4T-aH9"/>
+                    <navigationItem key="navigationItem" id="b0K-4T-aH9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="h8j-FS-9gL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qun-ls-4GA">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="5hg-tK-pb1"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundButton" destination="P7C-Hq-mvu" id="mXT-WV-mqw"/>
+                        <outlet property="changeButton" destination="aXG-ec-wyX" id="Rzz-Dq-ZPn"/>
                         <outlet property="iconButton" destination="exz-jh-LBE" id="fr1-af-F1s"/>
                         <outlet property="musicButton" destination="oH2-D4-JQp" id="At9-Ah-jJL"/>
                     </connections>

@@ -357,9 +357,9 @@ private extension ImagePipeline {
 
     func getDecompressedImage(for request: ImageRequest) -> DecompressedImageTask.Publisher {
         let key = request.makeLoadKeyForFinalImage()
-        return decompressedImageFetchTasks.publisher(withKey: key, starter: { task in
+        return decompressedImageFetchTasks.task(withKey: key, starter: { task in
             self.performDecompressedImageFetchTask(task, request: request)
-        })
+        }).publisher
     }
 
     func performDecompressedImageFetchTask(_ task: DecompressedImageTask, request: ImageRequest) {
@@ -512,9 +512,9 @@ private extension ImagePipeline {
         }
 
         let key = request.makeLoadKeyForFinalImage()
-        return processedImageFetchTasks.publisher(withKey: key, starter: { task in
+        return processedImageFetchTasks.task(withKey: key, starter: { task in
             self.performProcessedImageFetchTask(task, request: request)
-        })
+        }).publisher
     }
 
     func performProcessedImageFetchTask(_ task: ProcessedImageTask, request: ImageRequest) {
@@ -595,13 +595,13 @@ private extension ImagePipeline {
 
     func getOriginalImage(for request: ImageRequest) -> OriginalImageTask.Publisher {
         let key = request.makeLoadKeyForOriginalImage()
-        return originalImageFetchTasks.publisher(withKey: key, starter: { task in
+        return originalImageFetchTasks.task(withKey: key, starter: { task in
             let context = OriginalImageTaskContext(request: request)
             task.dependency = self.getOriginalImageData(for: request)
                 .subscribe(task) { [weak self] value, isCompleted, task in
                     self?.decodeData(value.0, urlResponse: value.1, isCompleted: isCompleted, task: task, context: context)
             }
-        })
+        }).publisher
     }
 
     func decodeData(_ data: Data, urlResponse: URLResponse?, isCompleted: Bool, task: OriginalImageTask, context: OriginalImageTaskContext) {
@@ -678,7 +678,7 @@ private extension ImagePipeline {
 
     func getOriginalImageData(for request: ImageRequest) -> OriginalImageDataTask.Publisher {
         let key = request.makeLoadKeyForOriginalImage()
-        return originalImageDataFetchTasks.publisher(withKey: key, starter: { task in
+        return originalImageDataFetchTasks.task(withKey: key, starter: { task in
             let context = OriginalImageDataTaskContext(request: request)
             if self.configuration.isRateLimiterEnabled {
                 // Rate limiter is synchronized on pipeline's queue. Delayed work is
@@ -687,16 +687,16 @@ private extension ImagePipeline {
                     guard let self = self, let task = task, !task.isDisposed else {
                         return false
                     }
-                    self.performOriginalImageeDataTask(task, context: context)
+                    self.performOriginalImageDataTask(task, context: context)
                     return true
                 }
             } else { // Start loading immediately.
-                self.performOriginalImageeDataTask(task, context: context)
+                self.performOriginalImageDataTask(task, context: context)
             }
-        })
+        }).publisher
     }
 
-    func performOriginalImageeDataTask(_ task: OriginalImageDataTask, context: OriginalImageDataTaskContext) {
+    func performOriginalImageDataTask(_ task: OriginalImageDataTask, context: OriginalImageDataTaskContext) {
         guard let cache = configuration.dataCache, configuration.dataCacheOptions.storedItems.contains(.originalImageData) else {
             loadImageData(for: task, context: context) // Skip disk cache lookup, load data
             return
@@ -885,5 +885,12 @@ public extension ImagePipeline {
             case .processingFailed: return "Failed to process the image"
             }
         }
+    }
+}
+
+// MARK: - Testing
+internal extension ImagePipeline {
+    var taskCount: Int {
+        return tasks.count
     }
 }

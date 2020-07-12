@@ -1,6 +1,6 @@
 <br/>
 
-<p align="left"><img src="https://cloud.githubusercontent.com/assets/1567433/13918338/f8670eea-ef7f-11e5-814d-f15bdfd6b2c0.png" height="180"/>
+<p align="left"><img src="https://cloud.githubusercontent.com/assets/1567433/13918338/f8670eea-ef7f-11e5-814d-f15bdfd6b2c0.png" height="180"/></p>
 
 # Powerful Image Loading System
 
@@ -11,17 +11,15 @@
 <a href="https://travis-ci.org/kean/Nuke"><img src="https://img.shields.io/travis/kean/Nuke/master.svg"></a>
 </p>
 
-> Upgrading from the previous version? Use a [**Migration Guide**](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Migrations).
+> Upgrading from the previous version? Use a [**Migration Guide**](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Migrations).
 
-Nuke provides a simple and efficient way to download and display images in your app. Behind its clear and concise API is an advanced architecture which enables its unique features and offers virtually unlimited possibilities for customization.
+Nuke provides a simple and efficient way to download and display images in your app. Behind its clear and concise API is an advanced architecture which enables its unique features and offers virtually unlimited possibilities for customization. The primary Nuke feature is [performance](https://kean.github.io/post/nuke-9).
 
 > **Fast LRU memory and disk cache** · **SwiftUI** · **Smart background decompression** · **Image processing** · **Elegant builder API** · **Resumable downloads** · **Intelligent deduplication** · **Request prioritization** · **Low data mode** · **Prefetching** · **Rate limiting** · **Progressive JPEG, HEIF, WebP, SVG, GIF** · **Alamofire** · **Combine** · **Reactive extensions**
 
 <br/>
 
 ## Getting Started
-
-> Documentation for the latest stable version (Nuke 8.4.1) can be found [here](https://github.com/kean/Nuke/tree/8.4.1).
 
 Nuke is easy to learn and use. Here is an overview of its APIs and features:
 
@@ -32,14 +30,14 @@ Nuke is easy to learn and use. Here is an overview of its APIs and features:
 - **Advanced Features** ‣ [Preheat Images](#image-preheating) · [Progressive Decoding](#progressive-decoding)
 - [**Extensions**](#h_plugins) ‣ [FetchImage](#fetch-image) · [Builder](#builder) · [Combine](#combine) · [RxNuke](#rxnuke) · [And More](#h_plugins) 
 
-To learn more see a full [**API Reference**](https://kean-org.github.io/docs/nuke/reference/9.0.0/index.html), and check out the demo project included in the repo. When you are ready to install, follow the [**Installation Guide**](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/installation-guide.md). See [**Requirements**](#h_requirements) for a list of supported platforms. If you encounter any issues, the [**Troubleshooting Guide**](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/troubleshooting.md) might help. 
+To learn more see a full [**API Reference**](https://kean-org.github.io/docs/nuke/reference/9.0.0/index.html), and check out the demo project included in the repo. When you are ready to install, follow the [**Installation Guide**](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/installation-guide.md). See [**Requirements**](#h_requirements) for a list of supported platforms. If you encounter any issues, please refer to [**FAQ**](https://github.com/kean/Nuke/blob/master/Documentation/Guides/faq.md) or [**Troubleshooting Guide**](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/troubleshooting.md). 
 
 <img src="https://img.shields.io/badge/supports-Swift%20Package%20Manager%2C%20CocoaPods%2C%20Carthage-green.svg">
 
 To learn more about the pipeline and the supported formats, see the dedicated guides.
 
-- [**Image Formats**](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md) ‣ [Progressive JPEG](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md#progressive-jpeg) · [HEIF](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md#heif) · [GIF](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md#gif) · [SVG](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md#svg) · [WebP](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-formats.md#webp) 
-- [**Image Pipeline**](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md) ‣ [Data Loading](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#data-loading-and-caching) · [Resumable Downloads](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#resumable-downloads) · [Memory Cache](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#memory-cache) · [Deduplication](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#deduplication) · [Decompression](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#decompression) · [Performance](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md#performance)
+- [**Image Formats**](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md) ‣ [Progressive JPEG](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md#progressive-jpeg) · [HEIF](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md#heif) · [GIF](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md#gif) · [SVG](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md#svg) · [WebP](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-formats.md#webp) 
+- [**Image Pipeline**](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md) ‣ [Data Loading](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#data-loading-and-caching) · [Resumable Downloads](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#resumable-downloads) · [Memory Cache](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#memory-cache) · [Deduplication](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#deduplication) · [Decompression](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#decompression) · [Performance](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md#performance)
 
 If you'd like to contribute to Nuke see [**Contributing**](#h_contribute).
 
@@ -57,7 +55,7 @@ Nuke.loadImage(with: url, into: imageView)
 
 Nuke will check if the image exists in the memory cache, and if it does, will instantly display it. If not, the image data will be loaded, decoded, processed, and decompressed in the background.
 
-> See [Image Pipeline Guide](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md) to learn how images are downloaded and processed.
+> See [Image Pipeline Guide](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md) to learn how images are downloaded and processed.
 
 ### In a Table View
 
@@ -72,7 +70,7 @@ func tableView(_ tableView: UITableView, cellForItemAt indexPath: IndexPaths) ->
 
 > When the view is deallocated, an associated request gets canceled automatically. To manually cancel the request, call `Nuke.cancelRequest(for: imageView)`.
 
-### Placeholders, Transitions, Content Modes
+### Placeholders, Transitions, Content Modes, Tint Colors
 
 Use `ImageLoadingOptions` to set a `placeholder`, select one of the built-in `transitions`, or provide a custom one.
 
@@ -84,13 +82,14 @@ let options = ImageLoadingOptions(
 Nuke.loadImage(with: url, options: options, into: imageView)
 ```
 
-You can even customize content modes per image type:
+You can even customize content modes or tint colors per image type:
 
 ```swift
 let options = ImageLoadingOptions(
     placeholder: UIImage(named: "placeholder"),
     failureImage: UIImage(named: "failureImage"),
-    contentModes: .init(success: .scaleAspectFill, failure: .center, placeholder: .center)
+    contentModes: .init(success: .scaleAspectFill, failure: .center, placeholder: .center),
+    tintColors: .init(success: .green, failure: .red, placeholder: .yellow)
 )
 ```
 
@@ -194,7 +193,7 @@ Custom processors need to implement `ImageProcessing` protocol. For the basic im
 ```swift
 public protocol ImageProcessing {
     func process(image: UIImage) -> UIImage? // NSImage on macOS
-    var identifier: String { get }
+    var identifier: String // get
 }
 ```
 
@@ -226,6 +225,8 @@ let task = ImagePipeline.shared.loadImage(
 )
 ```
 
+> `loadImage` returns always calls a completion closure asynchronously. To check if the image is stored in a memory cache, use `pipeline.cachedImage(for: url)`.
+
 > To download the data without doing any expensive decoding or processing, use `loadData(with:progress:completion:)`.
 
 ### `ImageTask`
@@ -241,7 +242,7 @@ task.priority = .high
 
 If you want to build a system that fits your specific needs, you won't be disappointed. There are a _lot of things_ to tweak. You can set custom data loaders and caches, configure image encoders and decoders, change the number of concurrent operations for each individual stage, disable and enable features like deduplication and rate limiting, and more.
 
-> To learn more see the inline documentation for `ImagePipeline.Configuration` and [Image Pipeline Guide](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/image-pipeline.md).
+> To learn more see the inline documentation for `ImagePipeline.Configuration` and [Image Pipeline Guide](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/image-pipeline.md).
 
 <img align="right" src="https://user-images.githubusercontent.com/1567433/59148462-94f60280-8a09-11e9-906a-6c7209b8f8c8.png" width="360"/>
 
@@ -321,7 +322,7 @@ isRateLimiterEnabled = true
 isProgressiveDecodingEnabled = false
 
 // Don't store progressive previews in memory cache.
-$0.isStoringPreviewsInMemoryCache = false
+isStoringPreviewsInMemoryCache = false
 
 // If the data task is terminated (either because of a failure or a
 // cancellation) and the image was partially loaded, the next load will
@@ -416,7 +417,7 @@ preheater.startPreheating(with: urls)
 preheater.stopPreheating(with: urls)
 ```
 
-> To learn more about other performance optimizations you can do, see [Performance Guide](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/performance-guide.md).
+> To learn more about other performance optimizations you can do, see [Performance Guide](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/performance-guide.md).
 
 Keep in mind that prefetching takes up users' data and puts extra pressure on CPU and memory. To reduce the CPU and memory usage, you have an option to choose only the disk cache as a prefetching destination:
 
@@ -570,7 +571,7 @@ Observable.concat(pipeline.loadImage(with: lowResUrl).orEmpty,
 | Nuke 9.0      | Swift 5.1       | Xcode 11.0      | iOS 11.0 / watchOS 4.0 / macOS 10.13 / tvOS 11.0  |
 | Nuke 8.0      | Swift 5.0       | Xcode 10.2      | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
 
-See [Installation Guide](https://github.com/kean/Nuke/blob/9.0.0/Documentation/Guides/installation-guide.md#h_requirements) for information about the older versions.
+See [Installation Guide](https://github.com/kean/Nuke/blob/9.1.0/Documentation/Guides/installation-guide.md#h_requirements) for information about the older versions.
 
 # License
 

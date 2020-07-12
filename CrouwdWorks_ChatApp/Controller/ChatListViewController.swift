@@ -26,12 +26,15 @@ class ChatListViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
-//        fetchChatroomsInfoFromFirestore()
         fetchUserInfoFromFirestore()
+        
+        self.chatListTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.chatListTableView.reloadData()
         
         if let indexPathForSelectedRow = chatListTableView.indexPathForSelectedRow {
             chatListTableView.deselectRow(at: indexPathForSelectedRow, animated: true)
@@ -84,7 +87,6 @@ class ChatListViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "SignUp", bundle: nil)
         let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController")
         let nav = UINavigationController(rootViewController: signUpViewController)
-//        nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
 }

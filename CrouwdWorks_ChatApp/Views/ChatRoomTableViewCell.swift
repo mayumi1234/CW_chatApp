@@ -46,9 +46,6 @@ class ChatRoomTableViewCell: UITableViewCell {
     }
     
     private func checkWhichUserMessage() {
-        
-//        print("message?.message: ", message?.message)
-        
 //        自分が入力した時
         if message?.flag == "0" {
             textView.isHidden = true

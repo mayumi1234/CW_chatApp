@@ -21,9 +21,17 @@ class ChatRoomViewController: UIViewController {
     private var messages = [Message]()
     private var chatrooms = [ChatRoom]()
     
+    private let accessoryHeight: CGFloat = 100
+    private let tableViewContentInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0)
+    private let tableViewIndicatorInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0)
+    private var safeAreaBottom: CGFloat {
+        self.view.safeAreaInsets.bottom
+    }
+    
     private lazy var chatInputAccessoryView: ChatInputAccesaryView = {
+//        ここでChatInputAccesaryViewにchatroomの情報を渡す？
         let view = ChatInputAccesaryView()
-        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
+        view.frame = .init(x: 0, y: 0, width: view.frame.width, height: accessoryHeight)
         view.delegate = self
         return view
     }()
@@ -33,26 +41,81 @@ class ChatRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        chatRoomTableView.delegate = self
-        chatRoomTableView.dataSource = self
-        
-        chatRoomTableView.allowsSelection = false
-        
-        chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
-        chatRoomTableView.backgroundColor = .rgb(red: 118, green: 140, blue: 180)
-        
-        chatRoomTableView.contentInset = .init(top: 0, left: 0, bottom: 80, right: 0)
-        chatRoomTableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 80, right: 0)
-        
-//        fetchMessages()
-//        ここに上の関数を入れると、メッセージの値は通常通りだが、画像の変更がされない
+        fetchMessages()
+        setupNotification()
+        setupChatRoomTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchMessages()
-//        ここに上の関数を入れると、設定画面で画像を変更するたびにメッセージが増えていく
+        setupBackgroundImage()
+        self.chatRoomTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+           super.viewWillDisappear(animated)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    private func setupBackgroundImage() {
+        guard let urlString = chatroom?.backgroundImageUrl else { return }
+        guard let url = URL(string: urlString) else { return }
+        do {
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.chatRoomTableView.frame.width, height: self.chatRoomTableView.frame.height))
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            imageView.image = image
+            imageView.alpha = 0.5
+            self.chatRoomTableView.backgroundView = imageView
+         }catch let err {
+              print("Error : \(err.localizedDescription)")
+         }
+    }
+    
+    private func setupChatRoomTableView() {
+        chatRoomTableView.delegate = self
+        chatRoomTableView.dataSource = self
+        chatRoomTableView.allowsSelection = false
+        chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
+        chatRoomTableView.backgroundColor = .rgb(red: 118, green: 140, blue: 180)
+        chatRoomTableView.contentInset = tableViewContentInset
+        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
+        chatRoomTableView.keyboardDismissMode = .interactive
+        chatRoomTableView.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
+        chatRoomTableView.reloadData()
+    }
+    
+    private func setupNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        
+        if let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
+            
+            if keyboardFrame.height <= accessoryHeight { return }
+            
+            let top = keyboardFrame.height - safeAreaBottom
+            var moveY = -(top - chatRoomTableView.contentOffset.y)
+            // 最下部意外の時は少しずれるので微調整
+            if chatRoomTableView.contentOffset.y != -60 { moveY += 60 }
+            let contentInset = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+            
+            chatRoomTableView.contentInset = contentInset
+            chatRoomTableView.scrollIndicatorInsets = contentInset
+            chatRoomTableView.contentOffset = CGPoint(x: 0, y: moveY)
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        chatRoomTableView.contentInset = tableViewContentInset
+        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
     }
     
     override var inputAccessoryView: UIView? {
@@ -70,17 +133,13 @@ class ChatRoomViewController: UIViewController {
         let settingViewController = storyboard.instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
         settingViewController.documentId = chatroom?.documentId
         settingViewController.chatroom = chatroom
+        settingViewController.messages = messages
         let nav = UINavigationController(rootViewController: settingViewController)
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
     }
     
-//    画像とメッセージを追加したために、二回この関数でmessage配列がappendされてしまうのが原因かと考える
     private func fetchMessages() {
-        self.chatrooms.removeAll()
-        self.messages.removeAll()
-        self.chatRoomTableView.reloadData()
-        
         guard let chatroomDocId = chatroom?.documentId else { return }
         Firestore.firestore().collection("chatRooms").document(chatroomDocId).collection("messages").addSnapshotListener { (snapshots, err) in
             
@@ -97,17 +156,18 @@ class ChatRoomViewController: UIViewController {
                     let chatroom = ChatRoom(dic: dic)
                     message.imageUrl = self.chatroom?.profileImageUrl as! String
                     chatroom.profileImageUrl = self.chatroom?.profileImageUrl as! String
-//                    元々addSnapshotListenerのところで場合わけする？（このコメントは気にしないでください）
+                    chatroom.backgroundImageUrl = self.chatroom?.backgroundImageUrl as! String
+                    chatroom.soundUrl = self.chatroom?.soundUrl as! String
+//                    ここでは値が入る
                     self.messages.append(message)
-                    print(self.messages.count)
                     self.chatrooms.append(chatroom)
                     self.messages.sort { (m1, m2) -> Bool in
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
-                        return m1Date < m2Date
+                        return m1Date > m2Date
                     }
                     self.chatRoomTableView.reloadData()
-                    self.chatRoomTableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
+//                    self.chatRoomTableView.scrollToRow(at: InzdexPath(row: self.messages.count - 1, section: 0), at: .top, animated: true)
                     
                 case .modified, .removed:
                     print("nothing to do")
@@ -158,6 +218,7 @@ extension ChatRoomViewController: ChatInputAccesaryViewDelegate {
                 print("メッセージの保存に成功しました。")
             }
         }
+        
     }
     
     private func addPartnerMessageToFirestore(text: String) {
@@ -225,8 +286,8 @@ extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatRoomTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatRoomTableViewCell
+        cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
         cell.message = messages[indexPath.row]
-        print("messages.count ", messages.count)
         return cell
     }
 }
