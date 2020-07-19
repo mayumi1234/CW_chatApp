@@ -12,7 +12,6 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
 
-//このクラスは使用していないので、気にしないでください
 class User {
     
     let email: String

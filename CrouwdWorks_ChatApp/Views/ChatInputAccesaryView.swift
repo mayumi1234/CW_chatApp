@@ -21,32 +21,31 @@ class ChatInputAccesaryView: UIView {
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var partnerButton: UIButton!
     weak var delegate: ChatInputAccesaryViewDelegate?
-    var audioPlayerInstance : AVAudioPlayer! = nil
+    var audioPlayerInstance : AVPlayer! = nil
     var chatroom: ChatRoom?
     
+    convenience init(chatroom: ChatRoom?) {
+    self.init(frame: .zero)
+
+    self.chatroom = chatroom
+
+    nibInit()
+    setUpViews()
+    }
+
     override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        nibInit()
-        setUpViews()
-        setupSound()
+    super.init(frame: frame)
     }
     
-    private func setupSound() {
-//        guard let urlString = chatroom?.soundUrl else { return }
-//        guard let url = URL(string: urlString) else { return }
-//        ここでchatroom?.soundUrlに値が入ってくれていない
-        
-        let soundFilePath = Bundle.main.path(forResource: "decision1", ofType: "mp3")!
-        let sound:URL = URL(fileURLWithPath: soundFilePath)
+    func setupSound() {
+        guard let urlString = chatroom?.soundUrl else { return }
+        guard let url = URL(string: urlString) else { return }
         
         do {
-            audioPlayerInstance = try AVAudioPlayer(contentsOf: sound, fileTypeHint:nil)
+            audioPlayerInstance = AVPlayer(url: url)
         } catch {
             print("AVAudioPlayerインスタンス作成でエラー")
         }
-        
-        audioPlayerInstance.prepareToPlay()
     }
     
     func removeText() {
@@ -89,14 +88,16 @@ class ChatInputAccesaryView: UIView {
     @IBAction func pushOnMyButton(_ sender: Any) {
         guard let text = textView.text else { return }
         delegate?.tappedMySendButton(text: text)
-        audioPlayerInstance.currentTime = 0         // 再生箇所を頭に移す
+        let time = CMTimeMakeWithSeconds(0, preferredTimescale: Int32(NSEC_PER_SEC))
+        audioPlayerInstance.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
         audioPlayerInstance.play()
     }
     
     @IBAction func pushOnPartnerButton(_ sender: Any) {
         guard let text = textView.text else { return }
         delegate?.tappedPartnerSendButton(text: text)
-        audioPlayerInstance.currentTime = 0         // 再生箇所を頭に移す
+        let time = CMTimeMakeWithSeconds(0, preferredTimescale: Int32(NSEC_PER_SEC))
+        audioPlayerInstance.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
         audioPlayerInstance.play()
     }
     

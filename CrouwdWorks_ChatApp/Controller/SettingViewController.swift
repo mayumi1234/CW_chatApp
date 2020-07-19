@@ -28,6 +28,7 @@ class SettingViewController: UIViewController {
     
     var documentId: String?
     var imageUrl: String?
+    var backgroundUrl: URL?
     var soundUrl: URL?
     
     var iconFlag = false
@@ -138,12 +139,11 @@ class SettingViewController: UIViewController {
             }
         } else if self.settingSoundFlag == true {
             guard let pushSound = self.soundUrl else { return }
-            guard let uploadPushSound: Data = pushSound.dataRepresentation else { return }
             
             let soundFileName = NSUUID().uuidString
             let soundStrageRef = Storage.storage().reference().child("push_sound").child(soundFileName)
             
-            soundStrageRef.putData(uploadPushSound, metadata: nil) { (metadata, err) in
+            soundStrageRef.putFile(from: pushSound, metadata: nil) { (metadata, err) in
                 if let err = err {
                     print("Firestorageへの情報の保存に失敗しました。\(err)")
                     return
@@ -163,27 +163,6 @@ class SettingViewController: UIViewController {
         }
     }
     
-    private func soundUrlFunction(pushSoundUrl: String) {
-        guard let chatroomDocId = self.documentId else { return }
-        
-        let soundUrl = [
-            "soundUrl": pushSoundUrl
-        ]
-        
-        Firestore.firestore().collection("chatRooms").document(chatroomDocId).updateData(soundUrl) { (err) in
-            if let err = err {
-                print("最新イメージの保存に失敗しました。\(err)")
-                return
-            }
-            print("最新イメージの保存に成功しました。")
-        }
-        
-        chatroom?.soundUrl = pushSoundUrl
-//        chatroom?.flag = "1"
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     private func urlFunction(profileImageUrl: String) {
         guard let chatroomDocId = self.documentId else { return }
         
@@ -199,9 +178,7 @@ class SettingViewController: UIViewController {
             print("最新イメージの保存に成功しました。")
         }
         
-//        message?.imageUrl = profileImageUrl
         chatroom?.profileImageUrl = profileImageUrl
-//        chatroom?.flag = "1"
         
         messages.forEach { message in
         message.imageUrl = profileImageUrl
@@ -225,13 +202,27 @@ class SettingViewController: UIViewController {
             print("最新イメージの保存に成功しました。")
         }
         
-        //        message?.imageUrl = profileImageUrl
         chatroom?.backgroundImageUrl = backgroundImageUrl
-//        chatroom?.flag = "1"
-//
-//        messages.forEach { message in
-//            message.imageUrl = profileImageUrl
-//        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func soundUrlFunction(pushSoundUrl: String) {
+        guard let chatroomDocId = self.documentId else { return }
+        
+        let soundUrl = [
+            "soundUrl": pushSoundUrl
+        ]
+        
+        Firestore.firestore().collection("chatRooms").document(chatroomDocId).updateData(soundUrl) { (err) in
+            if let err = err {
+                print("最新イメージの保存に失敗しました。\(err)")
+                return
+            }
+            print("最新イメージの保存に成功しました。")
+        }
+        
+        chatroom?.soundUrl = pushSoundUrl
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -241,8 +232,6 @@ class SettingViewController: UIViewController {
 extension SettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        print(url) // ここにURLが入っている
-        
         if soundFlag == true {
             let theFileName: String = url.lastPathComponent
             musicButton.titleLabel?.text = theFileName
@@ -252,7 +241,6 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.changeButton.backgroundColor = .blue
             self.soundUrl = url
             
-//            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -275,7 +263,8 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.settingIconFlag = true
             self.changeButton.backgroundColor = .blue
             
-//            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+            
         } else if backImageFrag == true {
             if let editImage = info[.editedImage] as? UIImage {
                 backgroundButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -293,9 +282,8 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.settingBackImageFrag = true
             self.changeButton.backgroundColor = .systemBlue
             
-//            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
-        
     }
     
 }

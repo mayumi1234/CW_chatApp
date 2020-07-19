@@ -77,6 +77,7 @@
 		9E1CCC6F248B55130044E547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E79FCA124C400A600CE15EC /* sample.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.mp4; sourceTree = "<group>"; };
 		9ED85360248B63A90072FE2D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		9ED85367248B63E00072FE2D /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +163,8 @@
 		9E1CCC4A248B55120044E547 /* CrouwdWorks_ChatApp */ = {
 			isa = PBXGroup;
 			children = (
-				9EDF18272490D9F0009FA56D /* Sounds */,
+				9E79FCA024C4008500CE15EC /* mp4 */,
+				9EDF18272490D9F0009FA56D /* mp3 */,
 				9ED8536D248B63F60072FE2D /* Extension */,
 				9ED8536E248B642C0072FE2D /* Models */,
 				9ED8537B248B644B0072FE2D /* StoryBoard */,
@@ -195,6 +197,14 @@
 				9E1CCC6F248B55130044E547 /* Info.plist */,
 			);
 			path = CrouwdWorks_ChatAppUITests;
+			sourceTree = "<group>";
+		};
+		9E79FCA024C4008500CE15EC /* mp4 */ = {
+			isa = PBXGroup;
+			children = (
+				9E79FCA124C400A600CE15EC /* sample.mp4 */,
+			);
+			path = mp4;
 			sourceTree = "<group>";
 		};
 		9ED85362248B63E00072FE2D /* Controller */ = {
@@ -257,12 +267,12 @@
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
-		9EDF18272490D9F0009FA56D /* Sounds */ = {
+		9EDF18272490D9F0009FA56D /* mp3 */ = {
 			isa = PBXGroup;
 			children = (
 				9EDF18282490DA08009FA56D /* decision1.mp3 */,
 			);
-			path = Sounds;
+			path = mp3;
 			sourceTree = "<group>";
 		};
 		D94D39CB1C9DA39A7E120E2D /* Pods */ = {
