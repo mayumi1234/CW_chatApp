@@ -17,7 +17,6 @@ class ChatListViewController: UIViewController {
     private let cellId = "cellId"
     private var chatrooms = [ChatRoom]()
     private var chatRoomListener: ListenerRegistration?
-    private var user: User?
 
     @IBOutlet weak var chatListTableView: UITableView!
     @IBOutlet weak var startCnversationButton: UIButton!
