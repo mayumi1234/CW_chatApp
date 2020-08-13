@@ -9,9 +9,10 @@
 import UIKit
 
 extension UIViewController {
+    
     static func dateFormatterForDateLabel(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .none
+        formatter.dateStyle = .full
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)
@@ -28,15 +29,5 @@ extension UIViewController {
             randomString += NSString(characters: &nextChar, length: 1) as String
         }
         return randomString
-    }
-}
-
-extension UIView {
-    static func dateFormatterForDateLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.locale = Locale(identifier: "ja_JP")
-        return formatter.string(from: date)
     }
 }

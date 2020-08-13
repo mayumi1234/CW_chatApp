@@ -57,6 +57,11 @@ class SettingViewController: UIViewController {
         self.changeButton.layer.cornerRadius = 5
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
+    
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

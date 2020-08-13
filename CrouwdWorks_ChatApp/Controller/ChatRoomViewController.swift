@@ -22,8 +22,8 @@ class ChatRoomViewController: UIViewController {
     private var chatrooms = [ChatRoom]()
     
     private let accessoryHeight: CGFloat = 100
-    private let tableViewContentInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 100, right: 0)
-    private let tableViewIndicatorInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 100, right: 0)
+    private let tableViewContentInset: UIEdgeInsets = .init(top: 100, left: 0, bottom: 0, right: 0)
+    private let tableViewIndicatorInset: UIEdgeInsets = .init(top: 100, left: 0, bottom: 0, right: 0)
     private var safeAreaBottom: CGFloat {
         self.view.safeAreaInsets.bottom
     }
@@ -43,6 +43,8 @@ class ChatRoomViewController: UIViewController {
         fetchMessages()
         setupChatRoomTableView()
         setupNotification()
+        
+//        navigationController?.navigationBar.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,10 +63,6 @@ class ChatRoomViewController: UIViewController {
            super.viewWillDisappear(animated)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     private func setupBackgroundImage() {
         guard let urlString = chatroom?.backgroundImageUrl else { return }
         guard let url = URL(string: urlString) else { return }
@@ -75,6 +73,7 @@ class ChatRoomViewController: UIViewController {
             imageView.image = image
             imageView.alpha = 0.5
             self.chatRoomTableView.backgroundView = imageView
+            self.chatRoomTableView.backgroundView?.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
          }catch let err {
               print("Error : \(err.localizedDescription)")
          }
@@ -86,10 +85,10 @@ class ChatRoomViewController: UIViewController {
         chatRoomTableView.allowsSelection = false
         chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         chatRoomTableView.backgroundColor = .rgb(red: 118, green: 140, blue: 180)
-        chatRoomTableView.contentInset = tableViewContentInset
-        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
+//        chatRoomTableView.contentInset = tableViewContentInset
+//        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
         chatRoomTableView.keyboardDismissMode = .interactive
-//        chatRoomTableView.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
+        chatRoomTableView.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
         chatRoomTableView.reloadData()
     }
     
@@ -106,13 +105,14 @@ class ChatRoomViewController: UIViewController {
             if keyboardFrame.height <= accessoryHeight { return }
             
             let bottom = keyboardFrame.height - safeAreaBottom
-            var moveY = -(bottom - chatRoomTableView.contentOffset.y - 1000)
+            var moveY = -(bottom - chatRoomTableView.contentOffset.y)
             if chatRoomTableView.contentOffset.y != -60 { moveY += 60 }
-            let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
-            
+            let contentInset = UIEdgeInsets(top: bottom, left: 0, bottom: 0, right: 0)
             chatRoomTableView.contentInset = contentInset
             chatRoomTableView.scrollIndicatorInsets = contentInset
-            chatRoomTableView.contentOffset = CGPoint(x: 0, y: moveY)
+            if moveY > -500 {
+                chatRoomTableView.contentOffset = CGPoint(x: 0, y: moveY)
+            }
         }
     }
     
@@ -166,10 +166,10 @@ class ChatRoomViewController: UIViewController {
                     self.messages.sort { (m1, m2) -> Bool in
                         let m1Date = m1.createdAt.dateValue()
                         let m2Date = m2.createdAt.dateValue()
-                        return m1Date < m2Date
+                        return m1Date > m2Date
                     }
                     self.chatRoomTableView.reloadData()
-                    self.chatRoomTableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
+//                    self.chatRoomTableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom , animated: false)
                     
                 case .modified, .removed:
                     print("nothing to do")
@@ -259,7 +259,7 @@ extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatRoomTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatRoomTableViewCell
-//        cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
+        cell.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
         cell.message = messages[indexPath.row]
         return cell
     }

@@ -88,17 +88,21 @@ class ChatInputAccesaryView: UIView {
     @IBAction func pushOnMyButton(_ sender: Any) {
         guard let text = textView.text else { return }
         delegate?.tappedMySendButton(text: text)
-        let time = CMTimeMakeWithSeconds(0, preferredTimescale: Int32(NSEC_PER_SEC))
-        audioPlayerInstance.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
-        audioPlayerInstance.play()
+        playToSounds()
     }
     
     @IBAction func pushOnPartnerButton(_ sender: Any) {
         guard let text = textView.text else { return }
         delegate?.tappedPartnerSendButton(text: text)
-        let time = CMTimeMakeWithSeconds(0, preferredTimescale: Int32(NSEC_PER_SEC))
-        audioPlayerInstance.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
-        audioPlayerInstance.play()
+        playToSounds()
+    }
+    
+    private func playToSounds() {
+        if chatroom?.soundUrl != "" {
+            let time: CMTime = CMTimeMakeWithSeconds(0, preferredTimescale: Int32(NSEC_PER_SEC))
+            audioPlayerInstance.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
+            audioPlayerInstance.play()
+        }
     }
     
     
