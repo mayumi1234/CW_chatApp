@@ -83,9 +83,9 @@ class ChatListViewController: UIViewController {
     }
 
     @objc private func tappedNaviPrivateBarButton() {
-        let storyboard = UIStoryboard.init(name: "SignUp", bundle: nil)
-        let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController")
-        let nav = UINavigationController(rootViewController: signUpViewController)
+        let storyboard = UIStoryboard.init(name: "MadeChatroom", bundle: nil)
+        let MadeChatroomViewController = storyboard.instantiateViewController(withIdentifier: "MadeChatroomViewController")
+        let nav = UINavigationController(rootViewController: MadeChatroomViewController)
         self.present(nav, animated: true, completion: nil)
     }
 }
@@ -140,13 +140,5 @@ class ChatListTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-
-    private func dateFormatterForDateLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .short
-        formatter.locale = Locale(identifier: "ja_JP")
-        return formatter.string(from: date)
     }
 }

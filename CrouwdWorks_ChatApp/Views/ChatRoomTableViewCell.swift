@@ -59,7 +59,7 @@ class ChatRoomTableViewCell: UITableViewCell {
                 myMessageTextView.text = message.message
                 let witdh = estimateFrameForTextView(text: message.message).width + 20
                 myMessageWidth.constant = witdh
-                myTimeLabel.text = dateFormatterForDateLabel(date: message.createdAt.dateValue())
+                myTimeLabel.text = UIView.dateFormatterForDateLabel(date: message.createdAt.dateValue())
             }
             
         } else {
@@ -80,7 +80,7 @@ class ChatRoomTableViewCell: UITableViewCell {
                 let witdh = estimateFrameForTextView(text: message.message).width + 20
                 textViewWidth.constant = witdh
 
-                label.text = dateFormatterForDateLabel(date: message.createdAt.dateValue())
+                label.text = UIView.dateFormatterForDateLabel(date: message.createdAt.dateValue())
             }
         }
     }
@@ -91,14 +91,6 @@ class ChatRoomTableViewCell: UITableViewCell {
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
         return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
-    }
-    
-    private func dateFormatterForDateLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.locale = Locale(identifier: "ja_JP")
-        return formatter.string(from: date)
     }
 
 }

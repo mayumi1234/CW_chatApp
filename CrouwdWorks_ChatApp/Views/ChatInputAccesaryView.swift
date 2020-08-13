@@ -25,16 +25,16 @@ class ChatInputAccesaryView: UIView {
     var chatroom: ChatRoom?
     
     convenience init(chatroom: ChatRoom?) {
-    self.init(frame: .zero)
-
-    self.chatroom = chatroom
-
-    nibInit()
-    setUpViews()
+        self.init(frame: .zero)
+        
+        self.chatroom = chatroom
+        
+        nibInit()
+        setUpViews()
     }
 
     override init(frame: CGRect) {
-    super.init(frame: frame)
+        super.init(frame: frame)
     }
     
     func setupSound() {

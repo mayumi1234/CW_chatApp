@@ -191,86 +191,57 @@ extension ChatRoomViewController: ChatInputAccesaryViewDelegate {
     }
     
     private func addMyMessageToFirestore(text: String) {
-        guard let chatroomDocId = chatroom?.documentId else { return }
-        guard let name = chatroom?.username else { return }
         chatInputAccessoryView.removeText()
         
-        let messageId = randomString(length: 20)
-        
         let docData = [
-            "name": name,
+            "name": valueString().0,
             "createdAt": Timestamp(),
             "message": text,
             "flag": "0" // ０のとき自分が送った
             ] as [String : Any]
         
-        Firestore.firestore().collection("chatRooms").document(chatroomDocId).collection("messages").document(messageId).setData(docData) { (err) in
-            if let err = err {
-                print("メッセージ情報の保存に失敗しました。\(err)")
-                return
-            }
-            let latestMessageData = [
-                "latestMessageId": messageId
-            ]
-            Firestore.firestore().collection("chatRooms").document(chatroomDocId).updateData(latestMessageData) { (err) in
-                if let err = err {
-                    print("最新メッセージの保存に失敗しました。\(err)")
-                    return
-                }
-                print("メッセージの保存に成功しました。")
-            }
-        }
+        messageFirestore(messageId: valueString().1, docData: docData, chatroomDocId: valueString().2)
         
     }
     
     private func addPartnerMessageToFirestore(text: String) {
-        guard let chatroomDocId = chatroom?.documentId else { return }
-        guard let name = chatroom?.username else { return }
         chatInputAccessoryView.removeText()
         
-        let messageId = randomString(length: 20)
-        
         let docData = [
-            "name": name,
+            "name": valueString().0,
             "createdAt": Timestamp(),
             "message": text,
             "flag": "1" //1のとき相手が送った
             ] as [String : Any]
         
+        messageFirestore(messageId: valueString().1, docData: docData, chatroomDocId: valueString().2)
+    }
+    
+    private func valueString()  -> (String, String, String){
+        let chatroomDocId = chatroom?.documentId
+        let name = chatroom?.username
+        let messageId = UIViewController.randomString(length: 20)
+        
+        return (name!, messageId, chatroomDocId!)
+    }
+    
+    private func messageFirestore(messageId: String, docData: [String : Any], chatroomDocId: String) {
         Firestore.firestore().collection("chatRooms").document(chatroomDocId).collection("messages").document(messageId).setData(docData) { (err) in
             if let err = err {
                 print("メッセージ情報の保存に失敗しました。\(err)")
                 return
             }
-            
             let latestMessageData = [
                 "latestMessageId": messageId
             ]
-            
             Firestore.firestore().collection("chatRooms").document(chatroomDocId).updateData(latestMessageData) { (err) in
                 if let err = err {
                     print("最新メッセージの保存に失敗しました。\(err)")
                     return
                 }
-                
                 print("メッセージの保存に成功しました。")
-                
             }
         }
-        
-    }
-    
-    func randomString(length: Int) -> String {
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
-
-        var randomString = ""
-        for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
-        return randomString
     }
     
 }

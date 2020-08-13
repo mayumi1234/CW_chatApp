@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 
-class SignUpViewController: UIViewController {
+class MadeChatroomViewController: UIViewController {
     
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -41,11 +41,6 @@ class SignUpViewController: UIViewController {
         madeChatRoomButton.backgroundColor = UIColor.rgb(red: 100, green: 100, blue: 100)
     }
     
-//    キーボード以外をタップしてキーボード閉じる
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     @objc private func pushOnImageButton() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -56,7 +51,6 @@ class SignUpViewController: UIViewController {
     
 //    イメージをFirestoreに保存する
     @objc private func pushOnRegisterButton() {
-        
         guard let image = imageButton.imageView?.image else { return }
         guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
         
@@ -82,7 +76,6 @@ class SignUpViewController: UIViewController {
 
     }
     
-//    User情報をFireStoreに保存
     private func createUserToFirestore(profileImageUrl: String) {
         guard let username = self.userNameTextField.text else { return }
 
@@ -91,7 +84,7 @@ class SignUpViewController: UIViewController {
             "profileImageUrl": profileImageUrl
             ] as [String : Any]
 
-        let documentID = randomString(length: 20)
+        let documentID = UIViewController.randomString(length: 20)
 
         Firestore.firestore().collection("chatRooms").document(documentID).setData(docData) { (err) in
             if let err = err {
@@ -103,22 +96,9 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    func randomString(length: Int) -> String {
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        let len = UInt32(letters.length)
-
-        var randomString = ""
-        for _ in 0 ..< length {
-            let rand = arc4random_uniform(len)
-            var nextChar = letters.character(at: Int(rand))
-            randomString += NSString(characters: &nextChar, length: 1) as String
-        }
-        return randomString
-    }
-    
 }
 
-extension SignUpViewController: UITextFieldDelegate {
+extension MadeChatroomViewController: UITextFieldDelegate {
     
 //    TFが空欄のときのレジスターボタンの処理
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -133,9 +113,14 @@ extension SignUpViewController: UITextFieldDelegate {
         }
     }
     
+    //    キーボード以外をタップしてキーボード閉じる
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 
-extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MadeChatroomViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 //    写真を設定するときの関数
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

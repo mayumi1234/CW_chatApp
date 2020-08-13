@@ -17,6 +17,7 @@
 		9E1CCC6E248B55130044E547 /* CrouwdWorks_ChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1CCC6D248B55130044E547 /* CrouwdWorks_ChatAppUITests.swift */; };
 		9E1CCC80248B5D200044E547 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */; };
 		9E1CCC82248B5DA30044E547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */; };
+		9E7064A424E5041D00EF3420 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7064A324E5041D00EF3420 /* DateExtension.swift */; };
 		9E79FCA324C484A600CE15EC /* ChatList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E79FCA224C484A600CE15EC /* ChatList.storyboard */; };
 		9ED85361248B63A90072FE2D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED85360248B63A90072FE2D /* UIColorExtension.swift */; };
 		9ED8536A248B63E00072FE2D /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */; };
@@ -27,8 +28,8 @@
 		9ED85384248B644B0072FE2D /* ChatRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED85379248B644A0072FE2D /* ChatRoomTableViewCell.swift */; };
 		9ED85385248B644B0072FE2D /* ChatInputAccesaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8537A248B644A0072FE2D /* ChatInputAccesaryView.swift */; };
 		9ED85386248B644B0072FE2D /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8537C248B644B0072FE2D /* ChatRoom.storyboard */; };
-		9ED8538D248B6CA20072FE2D /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8538C248B6CA20072FE2D /* SignUp.storyboard */; };
-		9ED8538F248B6CAD0072FE2D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8538E248B6CAD0072FE2D /* SignUpViewController.swift */; };
+		9ED8538D248B6CA20072FE2D /* MadeChatroom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8538C248B6CA20072FE2D /* MadeChatroom.storyboard */; };
+		9ED8538F248B6CAD0072FE2D /* MadeChatroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8538E248B6CAD0072FE2D /* MadeChatroomViewController.swift */; };
 		9EDF182B2490E8DE009FA56D /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDF182A2490E8DE009FA56D /* Setting.storyboard */; };
 		9EDF182D2490EAED009FA56D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDF182C2490EAED009FA56D /* SettingViewController.swift */; };
 		B2B4C343904CF7130B557B87 /* Pods_CrouwdWorks_ChatAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15178E16D7EF1C6F9308D8A7 /* Pods_CrouwdWorks_ChatAppTests.framework */; };
@@ -73,6 +74,7 @@
 		9E1CCC6F248B55130044E547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E7064A324E5041D00EF3420 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		9E79FCA224C484A600CE15EC /* ChatList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatList.storyboard; sourceTree = "<group>"; };
 		9ED85360248B63A90072FE2D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
@@ -83,8 +85,8 @@
 		9ED85379248B644A0072FE2D /* ChatRoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomTableViewCell.swift; sourceTree = "<group>"; };
 		9ED8537A248B644A0072FE2D /* ChatInputAccesaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputAccesaryView.swift; sourceTree = "<group>"; };
 		9ED8537C248B644B0072FE2D /* ChatRoom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
-		9ED8538C248B6CA20072FE2D /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		9ED8538E248B6CAD0072FE2D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9ED8538C248B6CA20072FE2D /* MadeChatroom.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MadeChatroom.storyboard; sourceTree = "<group>"; };
+		9ED8538E248B6CAD0072FE2D /* MadeChatroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadeChatroomViewController.swift; sourceTree = "<group>"; };
 		9EDF182A2490E8DE009FA56D /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		9EDF182C2490EAED009FA56D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		B909C21DA4CD126965818C39 /* Pods-CrouwdWorks_ChatAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrouwdWorks_ChatAppTests.release.xcconfig"; path = "Target Support Files/Pods-CrouwdWorks_ChatAppTests/Pods-CrouwdWorks_ChatAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 		9ED85362248B63E00072FE2D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9ED8538E248B6CAD0072FE2D /* SignUpViewController.swift */,
+				9ED8538E248B6CAD0072FE2D /* MadeChatroomViewController.swift */,
 				9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */,
 				9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */,
 				9EDF182C2490EAED009FA56D /* SettingViewController.swift */,
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				9ED85360248B63A90072FE2D /* UIColorExtension.swift */,
+				9E7064A324E5041D00EF3420 /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -239,7 +242,7 @@
 			children = (
 				9E79FCA224C484A600CE15EC /* ChatList.storyboard */,
 				9ED8537C248B644B0072FE2D /* ChatRoom.storyboard */,
-				9ED8538C248B6CA20072FE2D /* SignUp.storyboard */,
+				9ED8538C248B6CA20072FE2D /* MadeChatroom.storyboard */,
 				9EDF182A2490E8DE009FA56D /* Setting.storyboard */,
 			);
 			path = StoryBoard;
@@ -368,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E79FCA324C484A600CE15EC /* ChatList.storyboard in Resources */,
-				9ED8538D248B6CA20072FE2D /* SignUp.storyboard in Resources */,
+				9ED8538D248B6CA20072FE2D /* MadeChatroom.storyboard in Resources */,
 				9E1CCC58248B55130044E547 /* LaunchScreen.storyboard in Resources */,
 				9E1CCC55248B55130044E547 /* Assets.xcassets in Resources */,
 				9ED85386248B644B0072FE2D /* ChatRoom.storyboard in Resources */,
@@ -504,12 +507,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E1CCC80248B5D200044E547 /* ChatListViewController.swift in Sources */,
+				9E7064A424E5041D00EF3420 /* DateExtension.swift in Sources */,
 				9ED85361248B63A90072FE2D /* UIColorExtension.swift in Sources */,
 				9E1CCC4C248B55120044E547 /* AppDelegate.swift in Sources */,
 				9EDF182D2490EAED009FA56D /* SettingViewController.swift in Sources */,
 				9ED85374248B642C0072FE2D /* ChatRoom.swift in Sources */,
 				9ED8536A248B63E00072FE2D /* ChatRoomViewController.swift in Sources */,
-				9ED8538F248B6CAD0072FE2D /* SignUpViewController.swift in Sources */,
+				9ED8538F248B6CAD0072FE2D /* MadeChatroomViewController.swift in Sources */,
 				9ED85372248B642C0072FE2D /* Message.swift in Sources */,
 				9E1CCC4E248B55120044E547 /* SceneDelegate.swift in Sources */,
 				9ED85385248B644B0072FE2D /* ChatInputAccesaryView.swift in Sources */,
