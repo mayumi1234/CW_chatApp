@@ -11,6 +11,7 @@ target 'CrouwdWorks_ChatApp' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Nuke'
+  pod 'PKHUD'
 
   target 'CrouwdWorks_ChatAppTests' do
     inherit! :search_paths

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9WY-G4-Fx9">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up View Controller-->
+        <scene sceneID="P4e-AS-Tvc">
+            <objects>
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9WY-G4-Fx9" customClass="SignUpViewController" customModule="InstagramCloneApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AVE-2a-4du">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUO-A1-re0">
+                                <rect key="frame" x="122" y="74" width="170" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="BOi-Ga-gqZ"/>
+                                    <constraint firstAttribute="width" secondItem="RUO-A1-re0" secondAttribute="height" multiplier="1:1" id="dX2-LH-Qk5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="プロフィール画像"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="85"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pushOnImageButton:" destination="9WY-G4-Fx9" eventType="touchUpInside" id="S2B-LT-nwh"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5g1-eh-tya">
+                                <rect key="frame" x="57" y="274" width="300" height="244"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IeL-So-Y2V">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5A-F4-kHn">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6wT-6z-Xfo">
+                                                <rect key="frame" x="0.0" y="34" width="300" height="34"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N9b-XQ-9Ib">
+                                        <rect key="frame" x="0.0" y="88" width="300" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-U7-bK1">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hje-2Z-dke">
+                                                <rect key="frame" x="0.0" y="34" width="300" height="34"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7e0-SG-C7I">
+                                        <rect key="frame" x="0.0" y="176" width="300" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ3-WZ-ush">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザーの名前" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aVn-Vk-r2C">
+                                                <rect key="frame" x="0.0" y="34" width="300" height="34"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="cel-ZN-UUE"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTo-zz-smU">
+                                <rect key="frame" x="107" y="568" width="200" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XVy-SG-g3I"/>
+                                    <constraint firstAttribute="width" constant="200" id="Xbl-Kr-rGv"/>
+                                </constraints>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pushOnRegisterButton:" destination="9WY-G4-Fx9" eventType="touchUpInside" id="6dE-YY-HBu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ys-45-JKS">
+                                <rect key="frame" x="82" y="668" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="khv-ZP-rNk"/>
+                                </constraints>
+                                <state key="normal" title="既にアカウントをお持ちの方"/>
+                                <connections>
+                                    <action selector="pushOnAlreadyButton:" destination="9WY-G4-Fx9" eventType="touchUpInside" id="zcO-rR-C4W"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5g1-eh-tya" firstAttribute="top" secondItem="RUO-A1-re0" secondAttribute="bottom" constant="30" id="1f8-fr-UAg"/>
+                            <constraint firstItem="wTo-zz-smU" firstAttribute="top" secondItem="5g1-eh-tya" secondAttribute="bottom" constant="50" id="G1m-aT-962"/>
+                            <constraint firstItem="RUO-A1-re0" firstAttribute="centerX" secondItem="AVE-2a-4du" secondAttribute="centerX" id="Jme-9t-kZy"/>
+                            <constraint firstItem="5g1-eh-tya" firstAttribute="centerX" secondItem="AVE-2a-4du" secondAttribute="centerX" id="N2P-jj-YD8"/>
+                            <constraint firstItem="8Ys-45-JKS" firstAttribute="centerX" secondItem="AVE-2a-4du" secondAttribute="centerX" id="OxL-ND-mjE"/>
+                            <constraint firstItem="8Ys-45-JKS" firstAttribute="top" secondItem="wTo-zz-smU" secondAttribute="bottom" constant="50" id="lft-PA-kFf"/>
+                            <constraint firstItem="RUO-A1-re0" firstAttribute="top" secondItem="Zqa-nE-6OC" secondAttribute="top" constant="30" id="uOy-su-qzN"/>
+                            <constraint firstItem="wTo-zz-smU" firstAttribute="centerX" secondItem="AVE-2a-4du" secondAttribute="centerX" id="wPm-du-wnN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zqa-nE-6OC"/>
+                    </view>
+                    <connections>
+                        <outlet property="alreadyMemberButton" destination="8Ys-45-JKS" id="Fbq-DG-Mgd"/>
+                        <outlet property="emailTextField" destination="6wT-6z-Xfo" id="RA1-ZC-eTl"/>
+                        <outlet property="passwdTextField" destination="Hje-2Z-dke" id="X1e-EB-Bkx"/>
+                        <outlet property="profileImageView" destination="RUO-A1-re0" id="jGB-NR-h3W"/>
+                        <outlet property="registerButton" destination="wTo-zz-smU" id="pA5-PX-h2n"/>
+                        <outlet property="userNameTextField" destination="aVn-Vk-r2C" id="i11-OA-20V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gLi-bh-aUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="100"/>
+        </scene>
+    </scenes>
+</document>

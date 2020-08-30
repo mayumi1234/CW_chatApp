@@ -8,6 +8,8 @@
 
 import UIKit
 
+let blueColor: UIColor = .rgb(red: 50, green: 100, blue: 200)
+
 extension UIColor {
     
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {

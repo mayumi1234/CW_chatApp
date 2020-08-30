@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
+let HUDTime = 1.0
+let db = Firestore.firestore()
 
 extension UIViewController {
     
