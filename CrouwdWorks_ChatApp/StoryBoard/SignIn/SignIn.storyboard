@@ -84,7 +84,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKv-6P-HXZ">
                                 <rect key="frame" x="0.0" y="583.5" width="414" height="30"/>
-                                <state key="normal" title="まだアカウントをお持ちでない方"/>
+                                <state key="normal" title="初めて利用する方はこちら"/>
                                 <connections>
                                     <action selector="pushOnNonLoginButton:" destination="wIT-FA-GKh" eventType="touchUpInside" id="hWr-b6-9mg"/>
                                 </connections>

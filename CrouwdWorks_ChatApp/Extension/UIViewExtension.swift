@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     static func dateFormatterForDateLabel(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
+        formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)

@@ -21,6 +21,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate , UINavigation
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var alreadyMemberButton: UIButton!
+    @IBOutlet weak var usernameStackView: UIStackView!
     
     let db = Firestore.firestore()
 
@@ -35,6 +36,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate , UINavigation
     }
     
     private func setUpViews() {
+        profileImageView.isHidden = true
+        profileImageView.isEnabled = true
+        usernameStackView.isHidden = true
+        
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.borderColor = UIColor.rgb(red: 240, green: 240, blue: 240).cgColor
         
@@ -48,7 +53,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate , UINavigation
     }
     
     private func checkRegisterButton() {
-        if userNameTextField.text != "" && emailTextField.text != "" && passwdTextField.text != "" && profileImageView.imageView?.image != nil {
+//        if userNameTextField.text != "" && emailTextField.text != "" && passwdTextField.text != "" && profileImageView.imageView?.image != nil {
+        if emailTextField.text != "" && passwdTextField.text != "" {
             registerButton.isEnabled = true
             registerButton.backgroundColor = blueColor
         } else {
@@ -69,49 +75,51 @@ class SignUpViewController: UIViewController, UITextFieldDelegate , UINavigation
         return true
     }
     
-    @IBAction func pushOnImageButton(_ sender: Any) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
+//    @IBAction func pushOnImageButton(_ sender: Any) {
+//        let imagePickerController = UIImagePickerController()
+//        imagePickerController.delegate = self
+//        imagePickerController.allowsEditing = true
+//
+//        self.present(imagePickerController, animated: true, completion: nil)
+//    }
     
-    private func uploadImageToStorage() {
-        guard let image = profileImageView.imageView?.image else { return }
-        guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
-        
-        let fileName = NSUUID().uuidString
-        let strageRef = Storage.storage().reference().child("profile_image").child(fileName)
-        
-        strageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
-            if let err = err {
-                print("Firestorageへの情報の保存に失敗しました。\(err)")
-                HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
-                HUD.hide()
-                return
-            }
-            print("Firestorageへの情報の保存に成功しました。")
-            strageRef.downloadURL { (url, err) in
-                if let err = err {
-                    print("FireStorageからのダウンロードに失敗しました。")
-                    HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
-                    HUD.hide()
-                    return
-                }
-                
-                guard let urtString = url?.absoluteString else { return }
-                self.createUserToFirestore(profileImageUrl: urtString)
-            }
-        }
-    }
+//    private func uploadImageToStorage() {
+//        guard let image = profileImageView.imageView?.image else { return }
+//        guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
+//
+//        let fileName = NSUUID().uuidString
+//        let strageRef = Storage.storage().reference().child("profile_image").child(fileName)
+//
+//        strageRef.putData(uploadImage, metadata: nil) { (metadata, err) in
+//            if let err = err {
+//                print("Firestorageへの情報の保存に失敗しました。\(err)")
+//                HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
+//                HUD.hide()
+//                return
+//            }
+//            print("Firestorageへの情報の保存に成功しました。")
+//            strageRef.downloadURL { (url, err) in
+//                if let err = err {
+//                    print("FireStorageからのダウンロードに失敗しました。")
+//                    HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
+//                    HUD.hide()
+//                    return
+//                }
+//
+//                guard let urtString = url?.absoluteString else { return }
+//                self.createUserToFirestore(profileImageUrl: urtString)
+//            }
+//        }
+//    }
     
     @IBAction func pushOnRegisterButton(_ sender: Any) {
         HUD.show(.progress)
-        uploadImageToStorage()
+        createUserToFirestore()
+//        uploadImageToStorage()
     }
     
-    private func createUserToFirestore(profileImageUrl: String) {
+//    private func createUserToFirestore(profileImageUrl: String) {
+    private func createUserToFirestore() {
         guard let email = emailTextField.text else { return }
         guard let passwd = passwdTextField.text else { return }
         
@@ -124,28 +132,28 @@ class SignUpViewController: UIViewController, UITextFieldDelegate , UINavigation
             }
             print("認証情報の保存に成功しました。")
             
-            guard let uid = res?.user.uid else { return }
-            guard let username = self.userNameTextField.text else { return }
+//            guard let uid = res?.user.uid else { return }
+//            guard let username = self.userNameTextField.text else { return }
             
-            let docData = [
-                "email": email,
-                "username": username,
-                "profileImageUrl": profileImageUrl
-                ] as [String : Any]
-            
-            Firestore.firestore().collection("users").document(uid).setData(docData) { (err) in
-                if let err = err {
-                    print("Firestoreへの保存に失敗しました。\(err)")
-                    HUD.hide()
-                    HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
-                    return
-                }
-                print("Firestoreへの保存が成功しました。")
+//            let docData = [
+//                "email": email,
+//                "username": username,
+//                "profileImageUrl": profileImageUrl
+//                ] as [String : Any]
+//
+//            Firestore.firestore().collection("users").document(uid).setData(docData) { (err) in
+//                if let err = err {
+//                    print("Firestoreへの保存に失敗しました。\(err)")
+//                    HUD.hide()
+//                    HUD.flash(.labeledError(title: "会員登録に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
+//                    return
+//                }
+//                print("Firestoreへの保存が成功しました。")
                 
                 self.dismiss(animated: true, completion: nil)
                 
                 HUD.hide()
-            }
+//            }
         }
     }
     

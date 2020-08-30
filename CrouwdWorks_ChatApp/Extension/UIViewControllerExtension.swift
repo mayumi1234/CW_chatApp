@@ -14,13 +14,13 @@ let db = Firestore.firestore()
 
 extension UIViewController {
     
-    static func dateFormatterForDateLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .short
-        formatter.locale = Locale(identifier: "ja_JP")
-        return formatter.string(from: date)
-    }
+//    static func dateFormatterForDateLabel(date: Date) -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .none
+//        formatter.timeStyle = .short
+//        formatter.locale = Locale(identifier: "ja_JP")
+//        return formatter.string(from: date)
+//    }
     
     static func randomString(length: Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

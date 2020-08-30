@@ -44,6 +44,7 @@ class ChatRoomViewController: UIViewController {
         fetchMessages()
         setupChatRoomTableView()
         setupNotification()
+        setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +57,13 @@ class ChatRoomViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
            super.viewWillDisappear(animated)
+    }
+    
+    private func setupNavigationBar() {
+//        navigationController?.navigationBar.barTintColor = .rgb(red: 39, green: 49, blue: 69)
+        navigationController?.navigationBar.tintColor = .white
+        navigationItem.title = chatroom?.username
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     private func setupBackgroundImage() {
