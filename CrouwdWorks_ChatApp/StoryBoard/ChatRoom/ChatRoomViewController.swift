@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import PKHUD
+import AVFoundation
 
 class ChatRoomViewController: UIViewController {
     
@@ -62,7 +63,7 @@ class ChatRoomViewController: UIViewController {
     private func setupNavigationBar() {
 //        navigationController?.navigationBar.barTintColor = .rgb(red: 39, green: 49, blue: 69)
         navigationController?.navigationBar.tintColor = .white
-        navigationItem.title = chatroom?.username
+        navigationItem.title = chatroom?.partnername
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
@@ -199,13 +200,12 @@ extension ChatRoomViewController: ChatInputAccesaryViewDelegate {
         chatInputAccessoryView.removeText()
         
         let docData = [
-            "name": valueString().0,
+            "myname": valueString().1,
             "createdAt": Timestamp(),
-            "message": text,
-            "flag": "0" // ０のとき自分が送った
+            "message": text
             ] as [String : Any]
         
-        messageFirestore(messageId: valueString().1, docData: docData, chatroomDocId: valueString().2)
+        messageFirestore(messageId: valueString().2, docData: docData, chatroomDocId: valueString().3)
         
     }
     
@@ -213,21 +213,21 @@ extension ChatRoomViewController: ChatInputAccesaryViewDelegate {
         chatInputAccessoryView.removeText()
         
         let docData = [
-            "name": valueString().0,
+            "partnername": valueString().0,
             "createdAt": Timestamp(),
-            "message": text,
-            "flag": "1" //1のとき相手が送った
+            "message": text
             ] as [String : Any]
         
-        messageFirestore(messageId: valueString().1, docData: docData, chatroomDocId: valueString().2)
+        messageFirestore(messageId: valueString().2, docData: docData, chatroomDocId: valueString().3)
     }
     
-    private func valueString()  -> (String, String, String){
+    private func valueString()  -> (String, String, String, String){
         let chatroomDocId = chatroom?.documentId
-        let name = chatroom?.username
+        let parnername = chatroom?.partnername
+        let myname = chatroom?.myname
         let messageId = UIViewController.randomString(length: 20)
         
-        return (name!, messageId, chatroomDocId!)
+        return (parnername!, myname!, messageId, chatroomDocId!)
     }
     
     private func messageFirestore(messageId: String, docData: [String : Any], chatroomDocId: String) {

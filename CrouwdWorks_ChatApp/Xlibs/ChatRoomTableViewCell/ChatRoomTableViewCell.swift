@@ -22,6 +22,9 @@ class ChatRoomTableViewCell: UITableViewCell {
     @IBOutlet weak var myMessageTextView: UITextView!
     @IBOutlet weak var myTimeLabel: UILabel!
     @IBOutlet weak var myMessageWidth: NSLayoutConstraint!
+    @IBOutlet weak var partnerName: UILabel!
+    @IBOutlet weak var myName: UILabel!
+    @IBOutlet weak var readLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,15 +47,19 @@ class ChatRoomTableViewCell: UITableViewCell {
     
     private func checkWhichUserMessage() {
 //        自分が入力した時
-        if message?.flag == "0" {
+        if message?.myname != "" {
             textView.isHidden = true
             label.isHidden = true
             userImageView.isHidden = true
+            partnerName.isHidden = true
             
             myMessageTextView.isHidden = false
             myTimeLabel.isHidden = false
+//            myName.isHidden = false
+            readLabel.isHidden = false
             
             if let message = message {
+//                myName.text = message.myname
                 myMessageTextView.text = message.message
                 let witdh = estimateFrameForTextView(text: message.message).width + 20
                 myMessageWidth.constant = witdh
@@ -64,15 +71,19 @@ class ChatRoomTableViewCell: UITableViewCell {
             textView.isHidden = false
             label.isHidden = false
             userImageView.isHidden = false
+            partnerName.isHidden = false
 
             myMessageTextView.isHidden = true
             myTimeLabel.isHidden = true
+            myName.isHidden = true
+            readLabel.isHidden = true
             
             if let urlString = message?.imageUrl, let url = URL(string: urlString) {
                 Nuke.loadImage(with: url, into: userImageView)
             }
 
             if let message = message {
+                partnerName.text = message.partnername
                 textView.text = message.message
                 let witdh = estimateFrameForTextView(text: message.message).width + 20
                 textViewWidth.constant = witdh

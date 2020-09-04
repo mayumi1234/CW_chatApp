@@ -10,7 +10,8 @@ import FirebaseFirestore
 
 class ChatRoom {
     
-    var username: String
+    var partnername: String
+    var myname: String
     var profileImageUrl: String
     var documentId: String?
     var backgroundImageUrl: String?
@@ -18,7 +19,8 @@ class ChatRoom {
     var latestMessage: Timestamp
     
     init(dic: [String: Any]) {
-        self.username = dic["username"] as? String ?? ""
+        self.partnername = dic["partnername"] as? String ?? ""
+        self.myname = dic["myname"] as? String ?? ""
         self.profileImageUrl = dic["profileImageUrl"] as? String ?? ""
         self.backgroundImageUrl = dic["backgroundImageUrl"] as? String ?? ""
         self.soundUrl = dic["soundUrl"] as? String ?? ""

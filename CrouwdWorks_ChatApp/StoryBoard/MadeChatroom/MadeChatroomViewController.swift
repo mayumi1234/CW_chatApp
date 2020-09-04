@@ -17,6 +17,7 @@ class MadeChatroomViewController: UIViewController {
     
     @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var mynameTextField: UITextField!
     @IBOutlet weak var madeChatRoomButton: UIButton!
     
     override func viewDidLoad() {
@@ -40,6 +41,7 @@ class MadeChatroomViewController: UIViewController {
         imageButton.addTarget(self, action: #selector(pushOnImageButton), for: .touchUpInside)
         madeChatRoomButton.addTarget(self, action: #selector(pushOnRegisterButton), for: .touchUpInside)
         userNameTextField.delegate = self
+        mynameTextField.delegate = self
         
         madeChatRoomButton.isEnabled = false
         madeChatRoomButton.backgroundColor = UIColor.rgb(red: 100, green: 100, blue: 100)
@@ -87,13 +89,15 @@ class MadeChatroomViewController: UIViewController {
     }
     
     private func createUserToFirestore(profileImageUrl: String) {
-        guard let username = self.userNameTextField.text else { return }
+        guard let partnername = self.userNameTextField.text else { return }
+        guard let myname = self.mynameTextField.text else { return }
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }
 
         let docData = [
-            "username": username,
+            "partnername": partnername,
+            "myname": myname,
             "profileImageUrl": profileImageUrl,
             "latestMessage": Timestamp()
             ] as [String : Any]
@@ -121,8 +125,10 @@ extension MadeChatroomViewController: UITextFieldDelegate {
 //    TFが空欄のときのレジスターボタンの処理
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let userNameIsEmpty = userNameTextField.text?.isEmpty ?? false
+        let myNameIsEmpty = mynameTextField.text?.isEmpty ?? false
+        let userImageIsEmpty = imageButton.imageView?.image
         
-        if userNameIsEmpty {
+        if userNameIsEmpty && myNameIsEmpty && userNameIsEmpty == nil {
             madeChatRoomButton.isEnabled = false
             madeChatRoomButton.backgroundColor = UIColor.rgb(red: 100, green: 100, blue: 100)
         } else {

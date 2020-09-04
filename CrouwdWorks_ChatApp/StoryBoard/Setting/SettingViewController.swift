@@ -136,10 +136,10 @@ class SettingViewController: UIViewController {
         } else if self.settingBackImageFrag == true {
             guard let backgroundImage = backgroundButton.imageView?.image else { return }
             guard let uploadBackgroundImage = backgroundImage.jpegData(compressionQuality: 0.3) else { return }
-            
+
             let backgroundFileName = NSUUID().uuidString
             let backgroundStrageRef = Storage.storage().reference().child("background_image").child(backgroundFileName)
-            
+
             backgroundStrageRef.putData(uploadBackgroundImage, metadata: nil) { (metadata, err) in
                 if let err = err {
                     print("Firestorageへの情報の保存に失敗しました。\(err)")
@@ -155,7 +155,7 @@ class SettingViewController: UIViewController {
                         HUD.flash(.labeledError(title: "設定変更に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
                         return
                     }
-                    
+
                     guard let urtString = url?.absoluteString else { return }
                     self.backgroundUrlFunction(backgroundImageUrl: urtString)
                 }
@@ -223,11 +223,11 @@ class SettingViewController: UIViewController {
     private func backgroundUrlFunction(backgroundImageUrl: String) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let chatroomDocId = self.documentId else { return }
-        
+
         let ImageUrl = [
             "backgroundImageUrl": backgroundImageUrl
         ]
-        
+
         db.collection("users").document(uid).collection("chatRooms").document(chatroomDocId).updateData(ImageUrl) { (err) in
             if let err = err {
                 print("最新イメージの保存に失敗しました。\(err)")
@@ -237,12 +237,12 @@ class SettingViewController: UIViewController {
             }
             print("最新イメージの保存に成功しました。")
         }
-        
+
         chatroom?.backgroundImageUrl = backgroundImageUrl
-        
+
         HUD.hide()
         HUD.flash(.labeledSuccess(title: "設定の変更が完了しました。", subtitle: ""), delay: HUDTime)
-        
+
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -285,8 +285,6 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.settingSoundFlag = true
             self.changeButton.backgroundColor = .blue
             self.soundUrl = url
-            
-            print(self.soundUrl)
         }
     }
     
@@ -312,18 +310,19 @@ extension SettingViewController: UIImagePickerControllerDelegate, UINavigationCo
             dismiss(animated: true, completion: nil)
             
         } else if backImageFrag == true {
+            
             if let editImage = info[.editedImage] as? UIImage {
                 backgroundButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
             } else if let originalImage = info[.originalImage] as? UIImage {
                 backgroundButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
             }
-            
+
             backgroundButton.setTitle("", for: .normal)
             backgroundButton.imageView?.contentMode = .scaleAspectFill
             backgroundButton.contentHorizontalAlignment = .fill
             backgroundButton.contentVerticalAlignment = .fill
             backgroundButton.clipsToBounds = true
-            
+
             self.backImageFrag = false
             self.settingBackImageFrag = true
             self.changeButton.backgroundColor = .systemBlue

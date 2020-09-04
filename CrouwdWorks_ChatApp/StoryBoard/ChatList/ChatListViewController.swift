@@ -160,7 +160,7 @@ class ChatListTableViewCell: UITableViewCell {
     var chatroom: ChatRoom? {
         didSet {
             if let chatroom = chatroom {
-                nameLabel.text = chatroom.username
+                nameLabel.text = chatroom.partnername
                 if let url = URL(string: chatroom.profileImageUrl ) {
                     Nuke.loadImage(with: url, into: userImageView)
                 }
