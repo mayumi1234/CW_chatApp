@@ -37,6 +37,7 @@ class MadeChatroomViewController: UIViewController {
     private func setUpViews() {
         imageButton.layer.borderWidth = 1
         imageButton.layer.borderColor = UIColor.rgb(red: 240, green: 240, blue: 240).cgColor
+        imageButton.layer.cornerRadius = imageButton.layer.frame.width / 2
         
         imageButton.addTarget(self, action: #selector(pushOnImageButton), for: .touchUpInside)
         madeChatRoomButton.addTarget(self, action: #selector(pushOnRegisterButton), for: .touchUpInside)

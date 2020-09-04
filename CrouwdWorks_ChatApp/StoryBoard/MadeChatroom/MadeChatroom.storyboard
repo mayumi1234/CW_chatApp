@@ -31,25 +31,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G04-L1-ND8">
-                                <rect key="frame" x="122" y="188" width="170" height="170"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="G04-L1-ND8" secondAttribute="height" multiplier="1:1" id="etU-9Y-El4"/>
-                                    <constraint firstAttribute="width" constant="170" id="xiN-m6-IC3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="お相手の画像"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="85"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-aw-LtK">
-                                <rect key="frame" x="57" y="388" width="300" height="156"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-aw-LtK">
+                                <rect key="frame" x="57" y="237" width="300" height="422"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUn-Gm-ILX">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="166"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G04-L1-ND8">
+                                                <rect key="frame" x="75" y="8" width="150" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="G04-L1-ND8" secondAttribute="height" multiplier="1:1" id="6ZQ-8b-jpl"/>
+                                                    <constraint firstAttribute="height" constant="150" id="xdM-gI-wwk"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="お相手の画像"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="G04-L1-ND8" firstAttribute="centerX" secondItem="vUn-Gm-ILX" secondAttribute="centerX" id="5r2-Ea-tWT"/>
+                                            <constraint firstItem="G04-L1-ND8" firstAttribute="centerY" secondItem="vUn-Gm-ILX" secondAttribute="centerY" id="IXU-jv-o3z"/>
+                                            <constraint firstItem="G04-L1-ND8" firstAttribute="top" secondItem="vUn-Gm-ILX" secondAttribute="topMargin" id="N51-5j-tlZ"/>
+                                        </constraints>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DFq-Ey-db5">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
+                                        <rect key="frame" x="0.0" y="196" width="300" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="partner name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6e-1G-k92">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
@@ -66,7 +72,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ES8-AU-kcr">
-                                        <rect key="frame" x="0.0" y="88" width="300" height="68"/>
+                                        <rect key="frame" x="0.0" y="294" width="300" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jph-rI-KTL">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
@@ -82,36 +88,31 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-0B-iMy">
+                                        <rect key="frame" x="0.0" y="392" width="300" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="YZP-ve-ttD"/>
+                                        </constraints>
+                                        <state key="normal" title="チャットルームを作成">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Q54-jw-S7D"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-0B-iMy">
-                                <rect key="frame" x="107" y="594" width="200" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="YZP-ve-ttD"/>
-                                    <constraint firstAttribute="width" constant="200" id="col-jD-Fce"/>
-                                </constraints>
-                                <state key="normal" title="チャットルームを作成">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="G04-L1-ND8" firstAttribute="centerX" secondItem="KnH-rg-6Q0" secondAttribute="centerX" id="GM6-C8-HAc"/>
-                            <constraint firstItem="bRQ-aw-LtK" firstAttribute="top" secondItem="G04-L1-ND8" secondAttribute="bottom" constant="30" id="Jau-hP-Xsc"/>
-                            <constraint firstItem="G04-L1-ND8" firstAttribute="top" secondItem="j9y-MY-2mo" secondAttribute="top" constant="100" id="LEN-tX-DVk"/>
-                            <constraint firstItem="Yf6-0B-iMy" firstAttribute="top" secondItem="bRQ-aw-LtK" secondAttribute="bottom" constant="50" id="Ust-L2-7yh"/>
+                            <constraint firstItem="bRQ-aw-LtK" firstAttribute="centerY" secondItem="KnH-rg-6Q0" secondAttribute="centerY" id="ZMl-jG-wT5"/>
                             <constraint firstItem="bRQ-aw-LtK" firstAttribute="centerX" secondItem="KnH-rg-6Q0" secondAttribute="centerX" id="hh7-JS-aZT"/>
-                            <constraint firstItem="Yf6-0B-iMy" firstAttribute="centerX" secondItem="KnH-rg-6Q0" secondAttribute="centerX" id="xb2-63-qWc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j9y-MY-2mo"/>
                     </view>
@@ -136,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vye-QX-tEF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128" y="100"/>
+            <point key="canvasLocation" x="127.53623188405798" y="99.776785714285708"/>
         </scene>
     </scenes>
 </document>

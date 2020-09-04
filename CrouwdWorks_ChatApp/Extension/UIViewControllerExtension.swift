@@ -11,16 +11,9 @@ import FirebaseFirestore
 
 let HUDTime = 1.0
 let db = Firestore.firestore()
+let screenHeight = Int(UIScreen.main.bounds.size.height)
 
 extension UIViewController {
-    
-//    static func dateFormatterForDateLabel(date: Date) -> String {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .none
-//        formatter.timeStyle = .short
-//        formatter.locale = Locale(identifier: "ja_JP")
-//        return formatter.string(from: date)
-//    }
     
     static func randomString(length: Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

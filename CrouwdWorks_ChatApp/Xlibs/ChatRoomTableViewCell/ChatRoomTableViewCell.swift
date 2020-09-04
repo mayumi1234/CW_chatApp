@@ -29,7 +29,7 @@ class ChatRoomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        userImageView.layer.cornerRadius = 20
+        userImageView.layer.cornerRadius = userImageView.layer.frame.width / 2
         textView.layer.cornerRadius = 15
         myMessageTextView.layer.cornerRadius = 15
     }

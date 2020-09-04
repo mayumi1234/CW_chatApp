@@ -176,7 +176,7 @@ class ChatListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        userImageView.layer.cornerRadius = 35
+        userImageView.layer.cornerRadius = userImageView.layer.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -55,15 +55,15 @@ class SettingViewController: UIViewController {
     }
     
     private func setupLayout () {
-        self.iconButton.layer.cornerRadius = 75
+        self.iconButton.layer.cornerRadius = iconButton.layer.frame.width / 2
         self.iconButton.layer.borderColor = UIColor.gray.cgColor
         self.iconButton.layer.borderWidth = 1
         
-        self.backgroundButton.layer.cornerRadius = 75
+        self.backgroundButton.layer.cornerRadius = backgroundButton.layer.frame.width / 2
         self.backgroundButton.layer.borderColor = UIColor.gray.cgColor
         self.backgroundButton.layer.borderWidth = 1
         
-        self.musicButton.layer.cornerRadius = 75
+        self.musicButton.layer.cornerRadius = musicButton.layer.frame.width / 2
         self.musicButton.layer.borderColor = UIColor.gray.cgColor
         self.musicButton.layer.borderWidth = 1
         

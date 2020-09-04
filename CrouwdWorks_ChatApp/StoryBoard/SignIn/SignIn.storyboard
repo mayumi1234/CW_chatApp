@@ -15,11 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ugb-mz-Oxa">
-                                <rect key="frame" x="57" y="277.5" width="300" height="156"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ugb-mz-Oxa">
+                                <rect key="frame" x="57" y="258.5" width="300" height="379.5"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTb-TY-fXD">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="63.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="syH-6Y-t2r">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="300" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-u4-jcB">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
@@ -36,7 +42,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="iU9-5C-Mhf">
-                                        <rect key="frame" x="0.0" y="88" width="300" height="68"/>
+                                        <rect key="frame" x="0.0" y="191.5" width="300" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSJ-ih-juU">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
@@ -52,56 +58,44 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLL-tJ-TQG">
+                                        <rect key="frame" x="0.0" y="289.5" width="300" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="727-oe-1h4"/>
+                                        </constraints>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="pushOnLoginButton:" destination="wIT-FA-GKh" eventType="touchUpInside" id="w45-5R-7tp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKv-6P-HXZ">
+                                        <rect key="frame" x="0.0" y="349.5" width="300" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="rnF-dK-37X"/>
+                                        </constraints>
+                                        <state key="normal" title="初めて利用する方はこちら"/>
+                                        <connections>
+                                            <action selector="pushOnNonLoginButton:" destination="wIT-FA-GKh" eventType="touchUpInside" id="hWr-b6-9mg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="MxI-oj-ZYB"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLL-tJ-TQG">
-                                <rect key="frame" x="107" y="483.5" width="200" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="0il-Iu-IWI"/>
-                                    <constraint firstAttribute="height" constant="50" id="727-oe-1h4"/>
-                                </constraints>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pushOnLoginButton:" destination="wIT-FA-GKh" eventType="touchUpInside" id="w45-5R-7tp"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTb-TY-fXD">
-                                <rect key="frame" x="0.0" y="194" width="414" height="63.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="53"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKv-6P-HXZ">
-                                <rect key="frame" x="0.0" y="583.5" width="414" height="30"/>
-                                <state key="normal" title="初めて利用する方はこちら"/>
-                                <connections>
-                                    <action selector="pushOnNonLoginButton:" destination="wIT-FA-GKh" eventType="touchUpInside" id="hWr-b6-9mg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bKv-6P-HXZ" firstAttribute="leading" secondItem="w0G-LO-8Us" secondAttribute="leading" id="9iq-DI-9xH"/>
-                            <constraint firstItem="sTb-TY-fXD" firstAttribute="leading" secondItem="w0G-LO-8Us" secondAttribute="leading" id="NJh-Iy-YTF"/>
-                            <constraint firstItem="oLL-tJ-TQG" firstAttribute="top" secondItem="ugb-mz-Oxa" secondAttribute="bottom" constant="50" id="OT2-M1-9xQ"/>
-                            <constraint firstItem="bKv-6P-HXZ" firstAttribute="top" secondItem="oLL-tJ-TQG" secondAttribute="bottom" constant="50" id="TVe-ia-ORj"/>
-                            <constraint firstItem="ugb-mz-Oxa" firstAttribute="top" secondItem="sTb-TY-fXD" secondAttribute="bottom" constant="20" id="UcD-DP-c9g"/>
-                            <constraint firstItem="sTb-TY-fXD" firstAttribute="top" secondItem="w0G-LO-8Us" secondAttribute="top" constant="150" id="VSX-1l-2BM"/>
                             <constraint firstItem="ugb-mz-Oxa" firstAttribute="centerX" secondItem="TEE-mt-D1V" secondAttribute="centerX" id="WWp-jG-60A"/>
-                            <constraint firstItem="oLL-tJ-TQG" firstAttribute="centerX" secondItem="TEE-mt-D1V" secondAttribute="centerX" id="bw9-cA-dWS"/>
-                            <constraint firstItem="w0G-LO-8Us" firstAttribute="trailing" secondItem="sTb-TY-fXD" secondAttribute="trailing" id="bzP-GH-1tH"/>
-                            <constraint firstItem="w0G-LO-8Us" firstAttribute="trailing" secondItem="bKv-6P-HXZ" secondAttribute="trailing" id="s9A-QR-ztj"/>
+                            <constraint firstItem="ugb-mz-Oxa" firstAttribute="centerY" secondItem="TEE-mt-D1V" secondAttribute="centerY" id="XDG-Nl-0sb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w0G-LO-8Us"/>
                     </view>
