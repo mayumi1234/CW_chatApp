@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -31,60 +31,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ake-tr-Is7">
-                                <rect key="frame" x="132" y="138" width="150" height="660"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDH-eQ-aig">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exz-jh-LBE">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0B-U1-Vba">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="ake-tr-Is7">
+                                                <rect key="frame" x="132" y="30" width="150" height="660"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exz-jh-LBE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="FGI-zc-OTZ"/>
+                                                            <constraint firstAttribute="width" constant="150" id="IpR-0a-Gjb"/>
+                                                        </constraints>
+                                                        <state key="normal" title="相手アイコン選択"/>
+                                                        <connections>
+                                                            <action selector="iconSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="vl9-YL-UFs"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7C-Hq-mvu">
+                                                        <rect key="frame" x="0.0" y="210" width="150" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="zA9-PY-4tV"/>
+                                                        </constraints>
+                                                        <state key="normal" title="背景画像選択"/>
+                                                        <connections>
+                                                            <action selector="backGroundSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="tiK-2H-ow2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-D4-JQp">
+                                                        <rect key="frame" x="0.0" y="420" width="150" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="X9Z-dQ-K9x"/>
+                                                        </constraints>
+                                                        <state key="normal" title="効果音選択"/>
+                                                        <connections>
+                                                            <action selector="musicSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="ea5-DY-QQG"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXG-ec-wyX">
+                                                        <rect key="frame" x="0.0" y="630" width="150" height="30"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="Sg5-z8-fbp"/>
+                                                        </constraints>
+                                                        <state key="normal" title="変更">
+                                                            <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="settingButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="D3n-to-dVK"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="FGI-zc-OTZ"/>
-                                            <constraint firstAttribute="width" constant="150" id="IpR-0a-Gjb"/>
+                                            <constraint firstItem="ake-tr-Is7" firstAttribute="top" secondItem="C0B-U1-Vba" secondAttribute="top" constant="30" id="C8Q-yY-TOH"/>
+                                            <constraint firstItem="ake-tr-Is7" firstAttribute="centerX" secondItem="C0B-U1-Vba" secondAttribute="centerX" id="cXD-mk-mpW"/>
+                                            <constraint firstAttribute="height" constant="1000" id="fgq-yU-c69"/>
                                         </constraints>
-                                        <state key="normal" title="相手アイコン選択"/>
-                                        <connections>
-                                            <action selector="iconSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="vl9-YL-UFs"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7C-Hq-mvu">
-                                        <rect key="frame" x="0.0" y="210" width="150" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="zA9-PY-4tV"/>
-                                        </constraints>
-                                        <state key="normal" title="背景画像選択"/>
-                                        <connections>
-                                            <action selector="backGroundSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="tiK-2H-ow2"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oH2-D4-JQp">
-                                        <rect key="frame" x="0.0" y="420" width="150" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="X9Z-dQ-K9x"/>
-                                        </constraints>
-                                        <state key="normal" title="効果音選択"/>
-                                        <connections>
-                                            <action selector="musicSelectButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="ea5-DY-QQG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXG-ec-wyX">
-                                        <rect key="frame" x="0.0" y="630" width="150" height="30"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Sg5-z8-fbp"/>
-                                        </constraints>
-                                        <state key="normal" title="変更">
-                                            <color key="titleColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="settingButton:" destination="2SE-Qp-CVG" eventType="touchUpInside" id="D3n-to-dVK"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="C0B-U1-Vba" firstAttribute="trailing" secondItem="spd-Bq-LPf" secondAttribute="trailing" id="hJL-aX-36R"/>
+                                    <constraint firstItem="C0B-U1-Vba" firstAttribute="leading" secondItem="spd-Bq-LPf" secondAttribute="leading" id="oEM-ei-vCF"/>
+                                    <constraint firstItem="C0B-U1-Vba" firstAttribute="top" secondItem="spd-Bq-LPf" secondAttribute="top" id="wLJ-7j-JUf"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="74P-rf-1qk"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="spd-Bq-LPf"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ake-tr-Is7" firstAttribute="top" secondItem="eRA-K5-kjh" secondAttribute="top" constant="50" id="J2I-WU-419"/>
-                            <constraint firstItem="ake-tr-Is7" firstAttribute="centerX" secondItem="h7I-ZJ-9Co" secondAttribute="centerX" id="pES-2e-NgZ"/>
+                            <constraint firstItem="xDH-eQ-aig" firstAttribute="top" secondItem="eRA-K5-kjh" secondAttribute="top" id="6S1-dV-Ffm"/>
+                            <constraint firstItem="C0B-U1-Vba" firstAttribute="width" secondItem="h7I-ZJ-9Co" secondAttribute="width" id="RqH-HS-RMd"/>
+                            <constraint firstItem="xDH-eQ-aig" firstAttribute="trailing" secondItem="eRA-K5-kjh" secondAttribute="trailing" id="Ts2-Dx-9Fa"/>
+                            <constraint firstItem="xDH-eQ-aig" firstAttribute="bottom" secondItem="eRA-K5-kjh" secondAttribute="bottom" id="WTe-vG-cNs"/>
+                            <constraint firstItem="xDH-eQ-aig" firstAttribute="leading" secondItem="eRA-K5-kjh" secondAttribute="leading" id="xMp-NK-5Gg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eRA-K5-kjh"/>
                     </view>
@@ -100,6 +126,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="backgroundButton" destination="P7C-Hq-mvu" id="mXT-WV-mqw"/>
                         <outlet property="changeButton" destination="aXG-ec-wyX" id="Rzz-Dq-ZPn"/>
@@ -109,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgq-PG-cnZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="58"/>
+            <point key="canvasLocation" x="34.782608695652179" y="57.589285714285708"/>
         </scene>
     </scenes>
 </document>

@@ -128,12 +128,12 @@ extension MadeChatroomViewController: UITextFieldDelegate {
         let myNameIsEmpty = mynameTextField.text?.isEmpty ?? false
         let userImageIsEmpty = imageButton.imageView?.image
         
-        if userNameIsEmpty && myNameIsEmpty && userNameIsEmpty == nil {
-            madeChatRoomButton.isEnabled = false
-            madeChatRoomButton.backgroundColor = UIColor.rgb(red: 100, green: 100, blue: 100)
-        } else {
+        if !userNameIsEmpty && !myNameIsEmpty && userNameIsEmpty != nil {
             madeChatRoomButton.isEnabled = true
             madeChatRoomButton.backgroundColor = UIColor.rgb(red: 0, green: 185, blue: 0)
+        } else {
+            madeChatRoomButton.isEnabled = false
+            madeChatRoomButton.backgroundColor = UIColor.rgb(red: 100, green: 100, blue: 100)
         }
     }
     

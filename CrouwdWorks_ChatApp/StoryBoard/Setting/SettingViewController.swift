@@ -106,7 +106,7 @@ class SettingViewController: UIViewController {
     @IBAction func settingButton(_ sender: Any) {
         HUD.show(.progress)
         
-        if self.settingIconFlag == true {
+        if self.settingIconFlag {
             guard let image = iconButton.imageView?.image else { return }
             guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
             
@@ -133,7 +133,8 @@ class SettingViewController: UIViewController {
                     self.urlFunction(profileImageUrl: urtString)
                 }
             }
-        } else if self.settingBackImageFrag == true {
+        }
+        if self.settingBackImageFrag {
             guard let backgroundImage = backgroundButton.imageView?.image else { return }
             guard let uploadBackgroundImage = backgroundImage.jpegData(compressionQuality: 0.3) else { return }
 
@@ -160,7 +161,8 @@ class SettingViewController: UIViewController {
                     self.backgroundUrlFunction(backgroundImageUrl: urtString)
                 }
             }
-        } else if self.settingSoundFlag == true {
+        }
+        if self.settingSoundFlag {
             guard let pushSound = self.soundUrl else { return }
             
             let soundFileName = NSUUID().uuidString
@@ -186,7 +188,6 @@ class SettingViewController: UIViewController {
                     self.soundUrlFunction(pushSoundUrl: urtString)
                 }
             }
-            
         }
     }
     
@@ -200,12 +201,12 @@ class SettingViewController: UIViewController {
         
         db.collection("users").document(uid).collection("chatRooms").document(chatroomDocId).updateData(ImageUrl) { (err) in
             if let err = err {
-                print("最新イメージの保存に失敗しました。\(err)")
+                print("最新相手画像の保存に失敗しました。\(err)")
                 HUD.hide()
                 HUD.flash(.labeledError(title: "設定変更に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
                 return
             }
-            print("最新イメージの保存に成功しました。")
+            print("最新相手画像の保存に成功しました。")
         }
         
         chatroom?.profileImageUrl = profileImageUrl
@@ -215,9 +216,8 @@ class SettingViewController: UIViewController {
         }
         
         HUD.hide()
-        HUD.flash(.labeledSuccess(title: "設定の変更が完了しました。", subtitle: ""), delay: HUDTime)
+        HUD.flash(.labeledSuccess(title: "相手画像の変更が完了しました。", subtitle: ""), delay: HUDTime)
         
-        self.dismiss(animated: true, completion: nil)
     }
     
     private func backgroundUrlFunction(backgroundImageUrl: String) {
@@ -230,20 +230,19 @@ class SettingViewController: UIViewController {
 
         db.collection("users").document(uid).collection("chatRooms").document(chatroomDocId).updateData(ImageUrl) { (err) in
             if let err = err {
-                print("最新イメージの保存に失敗しました。\(err)")
+                print("最新背景画像の保存に失敗しました。\(err)")
                 HUD.hide()
                 HUD.flash(.labeledError(title: "設定変更に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
                 return
             }
-            print("最新イメージの保存に成功しました。")
+            print("最新背景画像の保存に成功しました。")
         }
 
         chatroom?.backgroundImageUrl = backgroundImageUrl
-
+        
         HUD.hide()
-        HUD.flash(.labeledSuccess(title: "設定の変更が完了しました。", subtitle: ""), delay: HUDTime)
+        HUD.flash(.labeledSuccess(title: "背景画像の変更が完了しました。", subtitle: ""), delay: HUDTime)
 
-        self.dismiss(animated: true, completion: nil)
     }
     
     private func soundUrlFunction(pushSoundUrl: String) {
@@ -256,20 +255,18 @@ class SettingViewController: UIViewController {
         
         db.collection("users").document(uid).collection("chatRooms").document(chatroomDocId).updateData(soundUrl) { (err) in
             if let err = err {
-                print("最新イメージの保存に失敗しました。\(err)")
+                print("最新mp3の保存に失敗しました。\(err)")
                 HUD.hide()
                 HUD.flash(.labeledError(title: "設定変更に失敗しました。", subtitle: "\(err)"), delay: HUDTime)
                 return
             }
-            print("最新イメージの保存に成功しました。")
+            print("最新mp3の保存に成功しました。")
         }
         
         chatroom?.soundUrl = pushSoundUrl
         
         HUD.hide()
-        HUD.flash(.labeledSuccess(title: "設定の変更が完了しました。", subtitle: ""), delay: HUDTime)
-        
-        self.dismiss(animated: true, completion: nil)
+        HUD.flash(.labeledSuccess(title: "通知音の変更が完了しました。", subtitle: ""), delay: HUDTime)
     }
     
 }
