@@ -17,9 +17,9 @@
 		9E1CCC63248B55130044E547 /* CrouwdWorks_ChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1CCC62248B55130044E547 /* CrouwdWorks_ChatAppTests.swift */; };
 		9E1CCC6E248B55130044E547 /* CrouwdWorks_ChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1CCC6D248B55130044E547 /* CrouwdWorks_ChatAppUITests.swift */; };
 		9E1CCC80248B5D200044E547 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */; };
-		9E1CCC82248B5DA30044E547 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */; };
 		9E7064A424E5041D00EF3420 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7064A324E5041D00EF3420 /* UIViewControllerExtension.swift */; };
 		9E79FCA324C484A600CE15EC /* ChatList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E79FCA224C484A600CE15EC /* ChatList.storyboard */; };
+		9E8A248B250262C700E5C5E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E8A248A250262C700E5C5E7 /* GoogleService-Info.plist */; };
 		9ED85361248B63A90072FE2D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED85360248B63A90072FE2D /* UIColorExtension.swift */; };
 		9ED8536A248B63E00072FE2D /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */; };
 		9ED85372248B642C0072FE2D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8536F248B642C0072FE2D /* Message.swift */; };
@@ -80,9 +80,9 @@
 		9E1CCC6D248B55130044E547 /* CrouwdWorks_ChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrouwdWorks_ChatAppUITests.swift; sourceTree = "<group>"; };
 		9E1CCC6F248B55130044E547 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E1CCC7F248B5D200044E547 /* ChatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
-		9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E7064A324E5041D00EF3420 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		9E79FCA224C484A600CE15EC /* ChatList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChatList.storyboard; sourceTree = "<group>"; };
+		9E8A248A250262C700E5C5E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9ED85360248B63A90072FE2D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9ED85365248B63E00072FE2D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		9ED8536F248B642C0072FE2D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 				9E1CCC4D248B55120044E547 /* SceneDelegate.swift */,
 				9E1CCC54248B55130044E547 /* Assets.xcassets */,
 				9E1CCC56248B55130044E547 /* LaunchScreen.storyboard */,
-				9E1CCC81248B5DA30044E547 /* GoogleService-Info.plist */,
 				9E1CCC59248B55130044E547 /* Info.plist */,
+				9E8A248A250262C700E5C5E7 /* GoogleService-Info.plist */,
 			);
 			path = CrouwdWorks_ChatApp;
 			sourceTree = "<group>";
@@ -445,9 +445,9 @@
 				9ED85386248B644B0072FE2D /* ChatRoom.storyboard in Resources */,
 				9EF481AB24FB265A00D09135 /* SignIn.storyboard in Resources */,
 				9ED85382248B644B0072FE2D /* ChatInputAccesaryView.xib in Resources */,
+				9E8A248B250262C700E5C5E7 /* GoogleService-Info.plist in Resources */,
 				9ED85383248B644B0072FE2D /* ChatRoomTableViewCell.xib in Resources */,
 				9EDF182B2490E8DE009FA56D /* Setting.storyboard in Resources */,
-				9E1CCC82248B5DA30044E547 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mayumi.yamanishi.CrouwdWorks-ChatApp";
+				PRODUCT_BUNDLE_IDENTIFIER = mayumi.yamanishi.CrouwdWorksChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -785,7 +785,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mayumi.yamanishi.CrouwdWorks-ChatApp";
+				PRODUCT_BUNDLE_IDENTIFIER = mayumi.yamanishi.CrouwdWorksChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
