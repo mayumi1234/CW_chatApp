@@ -89,8 +89,8 @@ class ChatRoomViewController: UIViewController {
         chatRoomTableView.allowsSelection = false
         chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         chatRoomTableView.backgroundColor = .rgb(red: 118, green: 140, blue: 180)
-//        chatRoomTableView.contentInset = tableViewContentInset
-//        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
+        chatRoomTableView.contentInset = tableViewContentInset
+        chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
         chatRoomTableView.keyboardDismissMode = .interactive
         chatRoomTableView.transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: 0)
         chatRoomTableView.reloadData()
