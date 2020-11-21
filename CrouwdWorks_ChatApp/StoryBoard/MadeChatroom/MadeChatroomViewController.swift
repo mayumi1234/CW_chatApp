@@ -60,7 +60,10 @@ class MadeChatroomViewController: UIViewController {
     @objc private func pushOnRegisterButton() {
         HUD.show(.progress)
         
-        guard let image = imageButton.imageView?.image else { return }
+        guard let image = imageButton.imageView?.image else {
+            HUD.flash(.labeledError(title: "画像を選択してください。", subtitle: ""), delay: 3)
+            return
+        }
         guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
         
         let fileName = NSUUID().uuidString
@@ -86,13 +89,21 @@ class MadeChatroomViewController: UIViewController {
                 self.createUserToFirestore(profileImageUrl: urtString)
             }
         }
-
     }
     
     private func createUserToFirestore(profileImageUrl: String) {
-        guard let partnername = self.userNameTextField.text else { return }
-        guard let myname = self.mynameTextField.text else { return }
+        guard let partnername = self.userNameTextField.text else {
+            HUD.flash(.labeledError(title: "相手の名前を入力してください。", subtitle: ""), delay: 3)
+            return
+        }
+        guard let myname = self.mynameTextField.text else {
+            HUD.flash(.labeledError(title: "自分の名前を入力してください。", subtitle: ""), delay: 3)
+            return
+        }
         guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        guard profileImageUrl != nil else {
             return
         }
 
@@ -127,9 +138,8 @@ extension MadeChatroomViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let userNameIsEmpty = userNameTextField.text?.isEmpty ?? false
         let myNameIsEmpty = mynameTextField.text?.isEmpty ?? false
-        let userImageIsEmpty = imageButton.imageView?.image
-        
-        if !userNameIsEmpty && !myNameIsEmpty && userNameIsEmpty != nil {
+
+        if !userNameIsEmpty && !myNameIsEmpty {
             madeChatRoomButton.isEnabled = true
             madeChatRoomButton.backgroundColor = UIColor.rgb(red: 0, green: 185, blue: 0)
         } else {
