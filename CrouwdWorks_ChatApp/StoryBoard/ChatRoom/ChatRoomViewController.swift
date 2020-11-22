@@ -88,7 +88,7 @@ class ChatRoomViewController: UIViewController {
         chatRoomTableView.dataSource = self
         chatRoomTableView.allowsSelection = false
         chatRoomTableView.register(UINib(nibName: "ChatRoomTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
-        chatRoomTableView.backgroundColor = .rgb(red: 118, green: 140, blue: 180)
+        chatRoomTableView.backgroundColor = .rgb(red: 176, green: 224, blue: 230)
         chatRoomTableView.contentInset = tableViewContentInset
         chatRoomTableView.scrollIndicatorInsets = tableViewIndicatorInset
         chatRoomTableView.keyboardDismissMode = .interactive

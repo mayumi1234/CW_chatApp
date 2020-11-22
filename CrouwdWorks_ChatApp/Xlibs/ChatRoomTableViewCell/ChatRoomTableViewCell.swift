@@ -56,7 +56,7 @@ class ChatRoomTableViewCell: UITableViewCell {
             myMessageTextView.isHidden = false
             myTimeLabel.isHidden = false
 //            myName.isHidden = false
-            readLabel.isHidden = false
+//            readLabel.isHidden = false
             
             if let message = message {
 //                myName.text = message.myname
@@ -76,7 +76,7 @@ class ChatRoomTableViewCell: UITableViewCell {
             myMessageTextView.isHidden = true
             myTimeLabel.isHidden = true
             myName.isHidden = true
-            readLabel.isHidden = true
+//            readLabel.isHidden = true
             
             if let urlString = message?.imageUrl, let url = URL(string: urlString) {
                 Nuke.loadImage(with: url, into: userImageView)
